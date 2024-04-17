@@ -26,6 +26,9 @@ export const Navbar = () => {
             <li >
               <NavLink to="/retro" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Retro</NavLink>
             </li>
+            <li >
+              <NavLink to="/perfil" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>perfil</NavLink>
+            </li>
           </ul>
           <span >
             {user?.name}

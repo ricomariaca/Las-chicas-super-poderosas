@@ -1,6 +1,7 @@
 import { Navigate, Routes, Route } from 'react-router-dom';
 import {ProductHome} from '../pages/ProductHome';
 import { Navbar } from '../../ui/components/Navbar';
+import { UserPerfile } from '../pages/UserPerfile';
 
 
 export const ProductHuntRouter = () => {
@@ -13,6 +14,13 @@ export const ProductHuntRouter = () => {
               path='/retro' 
               element={ 
               <ProductHome/>
+              } 
+              />
+
+              <Route 
+              path='/perfil' 
+              element={ 
+              <UserPerfile/>
               } 
               />
 
