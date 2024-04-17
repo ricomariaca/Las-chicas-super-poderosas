@@ -29,11 +29,14 @@ export const Navbar = () => {
             <li >
               <NavLink to="/perfil" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>perfil</NavLink>
             </li>
+            <li >
+              <NavLink to="/productView" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>vistaperfil</NavLink>
+            </li>
           </ul>
           <span >
             {user?.name}
           </span>
-          <button  onClick={() => onLogout()}>
+          <button onClick={() => onLogout()}>
             Logout
           </button>
         </div>
