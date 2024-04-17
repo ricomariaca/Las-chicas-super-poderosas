@@ -25,7 +25,7 @@ export const ProductHuntRouter = () => {
           }
         />
         <Route
-          path='/productView '
+          path='/productView'
           element={
             <ProductView/>
           }
