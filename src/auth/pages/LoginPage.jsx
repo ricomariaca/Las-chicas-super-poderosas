@@ -21,7 +21,7 @@ export const LoginPage = () => {
 
   return (
     <>
-      <div >
+      <div className="bt-red-400" >
         <h1>Login Page</h1>
         <hr />
         <button
