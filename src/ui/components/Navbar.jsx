@@ -45,7 +45,7 @@ export const Navbar = () => {
         <NavLink to="/productView" className="nav-link">Vista Perfil</NavLink>
       </li>
       <li>
-        <NavLink to="/lista productos" className="nav-link">lista productos</NavLink>
+        <NavLink to="/lista productos" className="nav-link">Lista productos</NavLink>
       </li>
     </ul>
     <span className="mr-4">{user?.name}</span>
