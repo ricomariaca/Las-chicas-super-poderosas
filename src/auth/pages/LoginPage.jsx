@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { useNavigate } from "react-router-dom"
 
 import { AuthContext } from "../context"
+import { Navbar } from "../../ui/components/Navbar";
 
 export const LoginPage = () => {
   const { login } = useContext(AuthContext);
@@ -21,14 +22,14 @@ export const LoginPage = () => {
 
   return (
     <>
-      <div className="bt-red-400" >
-        <h1>Login Page</h1>
+      <div className="" >
+        <Navbar/>
         <hr />
         <button
           
           onClick={onLogin}
         >
-          Login
+          emanuel gay
         </button>
       </div>
     </>

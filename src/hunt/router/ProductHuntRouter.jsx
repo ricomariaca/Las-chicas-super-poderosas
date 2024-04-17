@@ -3,18 +3,19 @@ import { ProductHome } from '../pages/ProductHome';
 import { Navbar } from '../../ui/components/Navbar';
 import { UserPerfile } from '../pages/UserPerfile';
 import { ProductView } from '../pages/ProductView';
+import { LoginPage } from '../../auth';
 
 
 export const ProductHuntRouter = () => {
   return (
 
     <>
-      <Navbar />
+      
       <Routes>
         <Route
           path='/retro'
           element={
-            <ProductHome />
+            <LoginPage/>
           }
         />
 
