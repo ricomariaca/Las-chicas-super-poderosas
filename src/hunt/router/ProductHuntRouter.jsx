@@ -4,6 +4,7 @@ import { Navbar } from '../../ui/components/Navbar';
 import { UserPerfile } from '../pages/UserPerfile';
 import { ProductView } from '../pages/ProductView';
 import { LoginPage } from '../../auth';
+import { ProductList } from '../pages/ProductList';
 
 
 export const ProductHuntRouter = () => {
@@ -29,6 +30,13 @@ export const ProductHuntRouter = () => {
           path='/productView'
           element={
             <ProductView/>
+          }
+        />
+
+        <Route
+          path='/lista productos'
+          element={
+            <ProductList/>
           }
         />
 

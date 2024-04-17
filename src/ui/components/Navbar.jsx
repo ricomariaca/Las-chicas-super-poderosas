@@ -44,6 +44,9 @@ export const Navbar = () => {
       <li>
         <NavLink to="/productView" className="nav-link">Vista Perfil</NavLink>
       </li>
+      <li>
+        <NavLink to="/lista productos" className="nav-link">lista productos</NavLink>
+      </li>
     </ul>
     <span className="mr-4">{user?.name}</span>
     <button onClick={() => onLogin()} className="bg-green-500 text-white px-4 py-2 rounded-lg">
