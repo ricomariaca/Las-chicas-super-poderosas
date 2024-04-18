@@ -17,9 +17,9 @@ export const ProductHuntRouter = () => {
       
       <Routes>
         <Route
-          path='/retro'
+          path='/ProductHunt'
           element={
-            <LoginPage/>
+            <ProductHome/>
           }
         />
         
@@ -59,7 +59,7 @@ export const ProductHuntRouter = () => {
         <Route
           path='/'
           element={
-            <Navigate to="/retro" />
+            <Navigate to="/home" />
           }
           
 

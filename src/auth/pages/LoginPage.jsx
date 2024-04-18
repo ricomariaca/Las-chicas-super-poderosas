@@ -25,7 +25,7 @@ export const LoginPage = () => {
 
   return (
     <>
-    <Navbar/>
+    
       <div className="" >
         
         <hr />

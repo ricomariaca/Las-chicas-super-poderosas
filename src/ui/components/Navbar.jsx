@@ -6,6 +6,7 @@ import { ProductHome } from "../../hunt/pages/ProductHome";
 
 export const Navbar = () => {
   const { user, logout, login, logged } = useContext(AuthContext);
+  
 
   const navigate = useNavigate();
   const onLogin = () => {
@@ -51,7 +52,7 @@ export const Navbar = () => {
             </li>
             {!logged && (
                 <li>
-                  <NavLink to="/login" className="nav-link">Iniciar se</NavLink>
+                  <NavLink to="/login" className="nav-link">Iniciar sesion</NavLink>
                 </li>
             )}
 
