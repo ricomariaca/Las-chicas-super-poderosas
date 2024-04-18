@@ -1,5 +1,6 @@
 import { ImgGallery } from "../../ui/components/ImgGallery"
 import { Navbar } from "../../ui/components/Navbar"
+import { StarRating } from "../../ui/components/StarRating"
 
 export const ProductView = () => {
   return (
@@ -10,6 +11,10 @@ export const ProductView = () => {
       </div>
       <div>
         <ImgGallery />
+      </div>
+
+      <div>
+        <StarRating />
       </div>
 
 

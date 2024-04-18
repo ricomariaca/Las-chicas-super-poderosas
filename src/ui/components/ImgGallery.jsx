@@ -28,8 +28,9 @@ export const ImgGallery = () => {
         <div className="max-w-screen-md mx p-4">
             <ImageGallery items={images}
                 thumbnailPosition='left'
-                showNav={false} 
-                showPlayButton={false}/>
+                showNav={false}
+                showPlayButton={false}
+                showFullscreenButton={false} />
 
         </div>
     )

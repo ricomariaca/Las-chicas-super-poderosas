@@ -40,7 +40,7 @@ export const Navbar = () => {
         <NavLink to="/productView" className="nav-link">Vista Perfil</NavLink>
       </li>
       <li>
-        <NavLink to="/lista productos" className="nav-link">lista productos</NavLink>
+        <NavLink to="/lista productos" className="nav-link">Lista productos</NavLink>
       </li>
       <li>
         <NavLink to="/login" className="nav-link">Iniciar se</NavLink>
