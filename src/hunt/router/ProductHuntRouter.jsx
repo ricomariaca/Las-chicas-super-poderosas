@@ -5,12 +5,14 @@ import { UserPerfile } from '../pages/UserPerfile';
 import { ProductView } from '../pages/ProductView';
 import { LoginPage } from '../../auth';
 import { ProductList } from '../pages/ProductList';
+import { AddProduct } from '../pages/AddProduct';
 
 
 export const ProductHuntRouter = () => {
   return (
 
     <>
+    
       
       <Routes>
         <Route
@@ -19,6 +21,7 @@ export const ProductHuntRouter = () => {
             <LoginPage/>
           }
         />
+        
 
         <Route
           path='/perfil'
@@ -39,12 +42,21 @@ export const ProductHuntRouter = () => {
             <ProductList/>
           }
         />
+         <Route
+          path='/addPoduct'
+          element={
+            <AddProduct/>
+          }
+        />
 
         <Route
           path='/'
           element={
             <Navigate to="/retro" />
           }
+          
+
+          
         />
       </Routes>
     </>
