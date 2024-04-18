@@ -1,7 +1,13 @@
+import { Navbar } from "../../ui/components/Navbar"
 
 
 export const ProductHome = () => {
   return (
-    <div>ProductHome</div>
+    <>
+    <Navbar/>
+    <h1>Home</h1>
+    </>
+    
+    
   )
 }

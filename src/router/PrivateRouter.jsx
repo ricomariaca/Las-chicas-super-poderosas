@@ -6,9 +6,7 @@ import { AuthContext } from "../auth";
 
 export const PrivateRouter = ({ children }) => {
   const { logged } = useContext(AuthContext);
-  //const { pathname } = useLocation();
+ 
 
-  //localStorage.setItem('lastPath', pathname);
-
-  return (logged) ? children : <Navigate to="/login" />
+  return (logged) ? children : <Navigate to="/home" />
 }

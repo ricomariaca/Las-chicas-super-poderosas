@@ -4,12 +4,22 @@ import { LoginPage } from '../auth'
 import { PublicRouter } from './PublicRouter'
 import { PrivateRouter } from './PrivateRouter'
 import { ProductHuntRouter } from '../hunt/router/ProductHuntRouter'
+import { ProductHome } from '../hunt/pages/ProductHome'
 
 
 export const AppRouter = () => {
   return (
    <>
     <Routes>
+    <Route   
+        path='/home' 
+        element={
+          <PublicRouter>
+            <ProductHome/>
+          </PublicRouter>
+        }
+      />
+    
       <Route   
         path='/login' 
         element={
@@ -26,7 +36,8 @@ export const AppRouter = () => {
            <ProductHuntRouter/>
         </PrivateRouter>
       } 
-      />    
+      />
+          
     </Routes>
    </>
   )
