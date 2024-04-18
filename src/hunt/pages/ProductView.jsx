@@ -45,7 +45,9 @@ export const ProductView = () => {
           </div>
 
         </div>
-        <button>asdsdd</button>
+        <div className="max-w-screen-md mx-auto my-auto p-4">
+          <button className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Visitar</button>
+        </div>
       </div>
 
       <div
@@ -57,14 +59,29 @@ export const ProductView = () => {
         <div className="my-3 ml-10 ">
           <CiUser size={30} />
           <StarRating />
-          <input type="text" placeholder="Ingrese su comentario" />
+          <input type="text" placeholder="Enter your comment" />
         </div>
         <div className="my-3">
-          <button>asdsd</button>
+          <button className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Send</button>
         </div>
       </div>
       <div
         className="bg-teal-600 h-0.5">
+      </div>
+
+      <div className="my-3 ml-10 " >
+        <div style={{ marginLeft: '50px' }} className="text-xl font-bold "  >
+          product reviews
+        </div>
+        <div >
+          <div style={{ marginLeft: '100px' }}
+            className="ml-12"><CiUser size={30} />
+          </div>
+          <div style={{ marginLeft: '57px' }}>
+            <StarRating />
+            <input className="ml-4" type="text" placeholder="comment" />
+          </div>
+        </div>
       </div>
 
 
