@@ -5,6 +5,7 @@ import { UserPerfile } from '../pages/UserPerfile';
 import { ProductView } from '../pages/ProductView';
 import { LoginPage } from '../../auth';
 import { ProductList } from '../pages/ProductList';
+import { AddProduct } from '../pages/AddProduct';
 
 
 export const ProductHuntRouter = () => {
@@ -37,6 +38,13 @@ export const ProductHuntRouter = () => {
           path='/lista productos'
           element={
             <ProductList/>
+          }
+        />
+
+        <Route
+          path='/agregar productos'
+          element={
+            <AddProduct/>
           }
         />
 
