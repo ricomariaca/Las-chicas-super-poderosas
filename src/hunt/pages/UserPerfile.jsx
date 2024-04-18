@@ -1,7 +1,10 @@
+import { Navbar } from "../../ui/components/Navbar"
 
 export const UserPerfile = () => {
   return (
+   
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <Navbar/>
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             User Perfile
@@ -47,7 +50,7 @@ export const UserPerfile = () => {
               className="block text-sm font-medium leading-6 text-gray-900">
                 Biography
                 </label>
-                <h1>¡Hola a todos! Soy Edna, un apasionado en descubrir nuevos productos y compartir mis opiniones sobre ellos. Desde tecnología hasta belleza, pasando por comida y viajes, me encanta explorar todo lo que el mundo tiene para ofrecer y luego compartir mis experiencias con ustedes.</h1>
+                <h1>Hello everyone! I'm Edna, passionate about discovering new products and sharing my opinions about them. From technology to beauty, food and travel, I love exploring everything the world has to offer and then sharing my experiences with you.</h1>
             </div> 
 
             <div>
