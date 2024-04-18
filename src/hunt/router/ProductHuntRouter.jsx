@@ -6,6 +6,7 @@ import { ProductView } from '../pages/ProductView';
 import { LoginPage } from '../../auth';
 import { ProductList } from '../pages/ProductList';
 import { AddProduct } from '../pages/AddProduct';
+import { EditProfile } from '../pages/EditProfile';
 
 
 export const ProductHuntRouter = () => {
@@ -49,6 +50,12 @@ export const ProductHuntRouter = () => {
           }
         />
 
+          <Route
+          path='/editprofile'
+          element={
+            <EditProfile/>
+          }
+        />
         <Route
           path='/'
           element={

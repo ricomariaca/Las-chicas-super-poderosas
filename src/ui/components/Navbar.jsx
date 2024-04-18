@@ -41,6 +41,9 @@ export const Navbar = () => {
               <NavLink to="/perfil" className="nav-link">Perfil</NavLink>
             </li>
             <li>
+              <NavLink to="/editprofile" className="nav-link">Editar perfil</NavLink>
+            </li>
+            <li>
               <NavLink to="/productView" className="nav-link">Vista Perfil</NavLink>
             </li>
             <li>
