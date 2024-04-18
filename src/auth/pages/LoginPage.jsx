@@ -7,6 +7,8 @@ import { Navbar } from "../../ui/components/Navbar";
 
 
 
+
+
 export const LoginPage = () => {
 
   
@@ -33,6 +35,7 @@ export const LoginPage = () => {
         >
            Vista iniciar sesion
         </button>
+       
         <div>
        
 

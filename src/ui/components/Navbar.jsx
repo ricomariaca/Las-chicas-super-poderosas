@@ -5,7 +5,7 @@ import { ProductHome } from "../../hunt/pages/ProductHome";
 
 
 export const Navbar = () => {
-  const { user, logout, login } = useContext(AuthContext);
+  const { user, logout, login, logged } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const onLogin = () => {
@@ -49,20 +49,29 @@ export const Navbar = () => {
             <li>
               <NavLink to="/lista productos" className="nav-link">Lista productos</NavLink>
             </li>
-            <li>
-              <NavLink to="/login" className="nav-link">Iniciar se</NavLink>
-            </li>
-
+            {!logged && (
+                <li>
+                  <NavLink to="/login" className="nav-link">Iniciar se</NavLink>
+                </li>
+            )}
 
           </ul>
-          <span className="mr-4">{user?.name}</span>
-
-          <button onClick={() => onLogout()} className="bg-green-500 text-white px-4 py-2 rounded-lg">
-            Logout
-          </button>
+          {logged && (
+              <>
+               <li>
+                  <NavLink to="/login" className="nav-link">Cargar</NavLink>
+                </li>
+             
+                <span className="mr-4">{user?.name}</span>
+                <button onClick={() => onLogout()} className="bg-green-500 text-white px-4 py-2 rounded-lg">
+                  Logout
+                </button>
+              </>
+          )}  
         </div>
       </nav>
 
     </>
   )
 }
+
