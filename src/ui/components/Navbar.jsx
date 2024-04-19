@@ -35,9 +35,23 @@ export const Navbar = () => {
 
         <div className="flex items-center">
           <ul className="flex justify-center space-x-6">
+            <div className="flex items-center">
+              <img src={icon.lupa} className="mr-2" alt="Search Icon" />
+              <input
+                type="text"
+                placeholder="Search..."
+                className="placeholder-teal-600 focus:placeholder-gray-300"
+              />
+            </div>
+
             <li>
-              <NavLink to="/home" className="nav-link text-teal-600">
-                Home
+              <NavLink to="/" className="nav-link text-teal-600">
+                About us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/" className="nav-link text-teal-600">
+                Products
               </NavLink>
             </li>
 
