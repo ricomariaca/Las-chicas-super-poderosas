@@ -24,7 +24,7 @@ export const ProductView = () => {
           <h1 className="font-bold">
             Title
           </h1>
-          <span>montana barata</span>
+          <span>Mkbook</span>
 
           <div className="my-8">
             <div>
@@ -41,7 +41,7 @@ export const ProductView = () => {
           </div>
           <div className="my-8">
             <p className="font-bold">description</p>
-            <span>una montana barata para construir terrenos</span>
+            <span>Una mkbook barata</span>
           </div>
 
         </div>
