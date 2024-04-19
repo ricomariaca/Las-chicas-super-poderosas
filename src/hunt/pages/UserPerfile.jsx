@@ -64,7 +64,7 @@ export const UserPerfile = () => {
                   to="/editprofile"
                   className="nav-link flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-500"
                 >
-                  Editar perfil
+                  Edit profile
                 </NavLink>
               </li>
             </ul>
