@@ -1,6 +1,7 @@
-
 export const InformationSpaceHome = () => {
   return (
-    <div>InformationSpaceHome</div>
-  )
-}
+    <div>
+      <h1>relleno</h1>
+    </div>
+  );
+};
