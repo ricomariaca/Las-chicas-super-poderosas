@@ -1,5 +1,4 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-
 import { AuthContext } from "../../auth";
 import { ProductHome } from "../../hunt/pages/ProductHome";
 import icon from "../../assets/icons";
@@ -35,8 +34,8 @@ export const Navbar = () => {
 
         <div className="flex items-center">
           <ul className="flex justify-center space-x-6">
-            <div className="flex items-center">
-              <img src={icon.lupa} className="mr-2" alt="Search Icon" />
+            <div className="flex items-center mr"  >
+              <img src={icon.lupa} className="mr-5 " alt="Search Icon" />
               <input
                 type="text"
                 placeholder="Search..."
@@ -45,19 +44,19 @@ export const Navbar = () => {
             </div>
 
             <li>
-              <NavLink to="/" className="nav-link text-teal-600">
+              <NavLink to="/" className="nav-link text-teal-600 mr-20" >
                 About us
               </NavLink>
             </li>
             <li>
-              <NavLink to="/" className="nav-link text-teal-600">
+              <NavLink to="/" className="nav-link text-teal-600 mr-20" >
                 Products
               </NavLink>
             </li>
 
             {!logged && (
               <li>
-                <NavLink to="/login" className="nav-link text-teal-600">
+                <NavLink to="/login" className="nav-link text-teal-600 mr-96">
                   Login
                 </NavLink>
               </li>
@@ -66,14 +65,16 @@ export const Navbar = () => {
 
           {logged && (
             <>
-              <li>
-                <NavLink to="/addPoduct" className="nav-link text-teal-600">
+              <div>
+                <NavLink to="/addPoduct" className="nav-link text-teal-600 mr-20">
                   Cargar
                 </NavLink>
-              </li>
+              </div>
+
+
 
               <span className="mr-4 text-teal-600">{`Hola, ${user?.name}`}</span>
-              <div className="relative">
+              <div className="relative mr-20">
                 <img
                   src={icon.user}
                   alt="User Icon"

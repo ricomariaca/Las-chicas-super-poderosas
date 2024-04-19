@@ -1,5 +1,6 @@
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
+import ima from "../../assets/images";
 
 export const ImgGallery = () => {
     //pobner en el redme cometario del commit
