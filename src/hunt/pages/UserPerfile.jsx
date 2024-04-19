@@ -13,7 +13,7 @@ export const UserPerfile = () => {
 
       <div className="text-center mb-7">
         <img
-          src={images.img3}
+          src={images.img5}
           className="w-27 h-32 mx-auto rounded-lg shadow-md"
           alt="Profile Picture"
         />

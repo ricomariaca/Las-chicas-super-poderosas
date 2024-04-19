@@ -2,3 +2,7 @@ export * from 'Navbar';
 export * from 'ImageGallery';
 export * from 'StarRating';
 export * from 'Drawer';
+export * from 'BannerHome';
+export * from 'LatestPosts';
+export * from 'InformationSpaceHome';
+export * from 'Footer'
