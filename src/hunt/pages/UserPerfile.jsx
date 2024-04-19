@@ -1,5 +1,6 @@
 import images from "../../assets/images";
 import { Navbar } from "../../ui/components/Navbar";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const UserPerfile = () => {
   return (
@@ -57,12 +58,16 @@ export const UserPerfile = () => {
           </div>
 
           <div>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-500 "
-            >
-              Edit profile
-            </button>
+            <ul>
+              <li>
+                <NavLink
+                  to="/editprofile"
+                  className="nav-link flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-500"
+                >
+                  Editar perfil
+                </NavLink>
+              </li>
+            </ul>
           </div>
         </form>
       </div>

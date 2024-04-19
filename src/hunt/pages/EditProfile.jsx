@@ -1,6 +1,7 @@
 import images from "../../assets/images";
 import { Drawer } from "../../ui/components/Drawer";
 import { Navbar } from "../../ui/components/Navbar";
+import { NavLink } from "react-router-dom";
 
 export const EditProfile = () => {
   return (
@@ -74,12 +75,16 @@ export const EditProfile = () => {
           </div>
 
           <div>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-500 "
-            >
-              Save changes
-            </button>
+            <ul>
+              <li>
+                <NavLink
+                  to="/perfil"
+                  className="nav-link flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-500"
+                >
+                  Save changes
+                </NavLink>
+              </li>
+            </ul>
           </div>
         </form>
       </div>

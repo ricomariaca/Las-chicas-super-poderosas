@@ -1,6 +1,10 @@
-
 export const LatestPosts = () => {
   return (
-    <div>LatestPosts</div>
-  )
-}
+    <div>
+      <div>
+        <h1>Latest Posts</h1>
+        <h2>All</h2>
+      </div>
+    </div>
+  );
+};

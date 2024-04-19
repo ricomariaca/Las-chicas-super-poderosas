@@ -1,7 +1,9 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+
 import { AuthContext } from "../../auth";
 import { ProductHome } from "../../hunt/pages/ProductHome";
+import icon from "../../assets/icons";
+import React, { useContext, useState } from "react";
 
 export const Navbar = () => {
   const { user, logout, login, logged } = useContext(AuthContext);
@@ -18,6 +20,11 @@ export const Navbar = () => {
       replace: true,
     });
   };
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
 
   return (
     <>
@@ -29,58 +36,73 @@ export const Navbar = () => {
         <div className="flex items-center">
           <ul className="flex justify-center space-x-6">
             <li>
-              <NavLink to="/addPoduct" className="nav-link text-teal-600">
-                Agregar producto
-              </NavLink>
-            </li>
-            <li>
               <NavLink to="/home" className="nav-link text-teal-600">
-                Inicio
+                Home
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/perfil" className="nav-link text-teal-600">
-                Perfil
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/editprofile" className="nav-link text-teal-600">
-                Editar perfil
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/productView" className="nav-link text-teal-600">
-                Vista Perfil
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/lista productos" className="nav-link text-teal-600">
-                Lista productos
-              </NavLink>
-            </li>
+
             {!logged && (
               <li>
                 <NavLink to="/login" className="nav-link text-teal-600">
-                  Iniciar sesión
+                  Login
                 </NavLink>
               </li>
             )}
           </ul>
+
           {logged && (
             <>
               <li>
-                <NavLink to="/login" className="nav-link text-teal-600">
+                <NavLink to="/addPoduct" className="nav-link text-teal-600">
                   Cargar
                 </NavLink>
               </li>
 
-              <span className="mr-4 text-teal-600">{user?.name}</span>
-              <button
-                onClick={() => onLogout()}
-                className="text-teal-600 px-4 py-2 rounded-lg"
-              >
-                Logout
-              </button>
+              <span className="mr-4 text-teal-600">{`Hola, ${user?.name}`}</span>
+              <div className="relative">
+                <img
+                  src={icon.user}
+                  alt="User Icon"
+                  className="w-8 h-8 cursor-pointer"
+                  onClick={toggleMenu}
+                />
+                {showMenu && (
+                  <ul className="absolute right-0 mt-2 py-2 bg-white border rounded-md shadow-lg min-w-max">
+                    <li>
+                      <NavLink
+                        to="/perfil"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Profile
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/myProducts"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Products
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/productView"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Product View
+                      </NavLink>
+                    </li>
+                    <li>
+                      <button
+                        onClick={logout}
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
+                )}
+              </div>
             </>
           )}
         </div>
