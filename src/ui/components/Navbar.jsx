@@ -107,14 +107,7 @@ export const Navbar = () => {
                         Products
                       </NavLink>
                     </li>
-                    <li>
-                      <NavLink
-                        to="/productView"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        Product View
-                      </NavLink>
-                    </li>
+
                     <li>
                       <button
                         onClick={logout}

@@ -8,7 +8,7 @@ export const LoginPage = () => {
   const { login } = useContext(AuthContext);
 
   const onLogin = () => {
-    login("Cosme Fula");
+    login("Anthony");
   };
 
   return (

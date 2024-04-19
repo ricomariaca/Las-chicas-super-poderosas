@@ -76,8 +76,11 @@ export const LatestPosts = () => {
 
   return (
     <div>
-      <h1>Latest Posts</h1>
-      <h2>All</h2>
+      <div className="flex items-center">
+        <h1 className="text-xl font-semibold">Latest Posts</h1>
+        <h2 className="text-lg text-gray-500 ml-auto">All</h2>
+      </div>
+
       <Carousel responsive={responsive}>{card}</Carousel>
     </div>
   );
