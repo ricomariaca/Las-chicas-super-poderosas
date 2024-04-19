@@ -3,6 +3,8 @@ import { AuthContext } from "../../auth";
 import { ProductHome } from "../../hunt/pages/ProductHome";
 import icon from "../../assets/icons";
 import React, { useContext, useState } from "react";
+import images from "../../assets/images";
+import icons from "../../assets/icons";
 
 export const Navbar = () => {
   const { user, logout, login, logged } = useContext(AuthContext);
@@ -34,7 +36,7 @@ export const Navbar = () => {
 
         <div className="flex items-center">
           <ul className="flex justify-center space-x-6">
-            <div className="flex items-center mr"  >
+            <div className="flex items-center mr">
               <img src={icon.lupa} className="mr-5 " alt="Search Icon" />
               <input
                 type="text"
@@ -44,12 +46,12 @@ export const Navbar = () => {
             </div>
 
             <li>
-              <NavLink to="/" className="nav-link text-teal-600 mr-20" >
+              <NavLink to="/" className="nav-link text-teal-600 mr-20">
                 About us
               </NavLink>
             </li>
             <li>
-              <NavLink to="/" className="nav-link text-teal-600 mr-20" >
+              <NavLink to="/" className="nav-link text-teal-600 mr-20">
                 Products
               </NavLink>
             </li>
@@ -65,15 +67,21 @@ export const Navbar = () => {
 
           {logged && (
             <>
-              <div>
-                <NavLink to="/addPoduct" className="nav-link text-teal-600 mr-20">
-                  Cargar
+              <div className="justify-between">
+                <NavLink
+                  to="/addPoduct"
+                  className="nav-link text-teal-600 mr-20 flex items-center"
+                >
+                  <img
+                    src={icons.submit}
+                    alt=""
+                    className="inline-block align-text-top mr-2"
+                  />
+                  Submit
                 </NavLink>
               </div>
 
-
-
-              <span className="mr-4 text-teal-600">{`Hola, ${user?.name}`}</span>
+              <span className="mr-4 text-teal-600">{`Hello, ${user?.name}`}</span>
               <div className="relative mr-20">
                 <img
                   src={icon.user}

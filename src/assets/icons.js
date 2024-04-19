@@ -7,6 +7,10 @@ import IconFF from './icon/IconFF.png'
 import Twit from './icon/Twit.png'
 import Tik from './icon/Tik.png'
 import YouT from './icon/YouT.png'
+import submit from './icon/submit.png'
+import totalR from './icon/totalR.png'
+import star from './icon/stars.png'
+
 export default {
     "icon1": iconoins,
     "user": user,
@@ -15,7 +19,10 @@ export default {
     "IconFF": IconFF,
     "Twit": Twit,
     "Tik": Tik,
-    "YouT": YouT
+    "YouT": YouT,
+    "submit": submit,
+    "totalR": totalR,
+    "stars": star
     
     
 }
