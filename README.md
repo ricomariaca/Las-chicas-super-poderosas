@@ -1,8 +1,30 @@
-# React + Vite
+#Electiva 1 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+##Integrantes:
+-María José Velásquez Sánchez
+-Anthony Arango Restrepo 
+-Emanuel Rico Mariaca
 
-Currently, two official plugins are available:
+##Tecnología utilizada:
+-React + vite
+-Tailwind CSS
+-react-icons-save
+-react-image-gallery
+-react-router-dom
+-react-multi-carousel
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##Nombre del proyecto: 
+-Las-chichas-super-poderosas
+
+#Descripción:
+-Este proyecto es un clon de Product Hunt, una plataforma de descubrimiento de productos. Permite a los usuarios explorar productos, votar por sus favoritos y ver los productos más populares.
+
+##Como correr el proyecto
+1.**Clona el repositorio**
+-Git clone
+https://github.com/ricomariaca/Las-chicas-super-poderosas.git
+Npm install(Este comando para descargar todas las dependencias, librerias y componentes para su correcta ejecucion).
+
+
+
+
