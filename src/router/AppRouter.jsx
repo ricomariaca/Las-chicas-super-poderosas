@@ -4,7 +4,7 @@ import { PublicRouter } from "./PublicRouter";
 import { PrivateRouter } from "./PrivateRouter";
 import { ProductHuntRouter } from "../hunt/router/ProductHuntRouter";
 import { ProductHome } from "../hunt/pages/ProductHome";
-import { ProductView } from "../hunt/pages/ProductView";
+import { ProductView } from "../hunt/pages/products/ProductView";
 
 export const AppRouter = () => {
   return (

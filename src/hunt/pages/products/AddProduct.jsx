@@ -1,6 +1,6 @@
-import { Navbar } from "../../ui/components/Navbar";
-import { Drawer } from "../../ui/components/Drawer";
-import images from "../../assets/images";
+import { Drawer } from "../../../ui/components/products/Drawer";
+import images from "../../../assets/images";
+import { Navbar } from "../../../ui/components/common/Navbar";
 
 export const AddProduct = () => {
   return (

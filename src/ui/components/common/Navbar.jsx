@@ -1,10 +1,10 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../auth";
-import { ProductHome } from "../../hunt/pages/ProductHome";
-import icon from "../../assets/icons";
+import { AuthContext } from "../../../auth";
+import { ProductHome } from "../../../hunt/pages/ProductHome";
+import icon from "../../../assets/icons";
 import React, { useContext, useState } from "react";
-import images from "../../assets/images";
-import icons from "../../assets/icons";
+import images from "../../../assets/images";
+import icons from "../../../assets/icons";
 
 export const Navbar = () => {
   const { user, logout, login, logged } = useContext(AuthContext);
