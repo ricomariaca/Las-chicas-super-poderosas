@@ -1,8 +1,8 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { CardProduct } from "./CardProduct";
+import { CardProduct } from "../common/CardProduct";
 
-export const BestRatedHome = () => {
+export const LatestPosts = () => {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1024 },
@@ -24,19 +24,19 @@ export const BestRatedHome = () => {
   const ProducData = [
     {
       id: 1,
-      imageurl: "Rbox.jpg",
+      imageurl: "portatil.jpg",
       name: "Title1",
       description: "aaa",
     },
     {
       id: 2,
-      imageurl: "Rnin.jpg",
+      imageurl: "celular.jpg",
       name: "Title2",
       description: "aaa",
     },
     {
       id: 3,
-      imageurl: "rplay.jpg",
+      imageurl: "celular2.jpg",
       name: "Title3",
       description: "aaa",
     },
@@ -73,10 +73,11 @@ export const BestRatedHome = () => {
       description={item.description}
     />
   ));
+
   return (
     <div>
       <div className="flex items-center">
-        <h1 className="text-xl font-semibold">Best rated</h1>
+        <h1 className="text-xl font-semibold">Latest Posts</h1>
         <h2 className="text-lg text-gray-500 ml-auto">All</h2>
       </div>
 

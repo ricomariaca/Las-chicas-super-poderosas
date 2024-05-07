@@ -1,5 +1,5 @@
-import images from "../../assets/images";
-import { Navbar } from "../../ui/components/Navbar";
+import images from "../../../assets/images";
+import { Navbar } from "../../../ui/components/common/Navbar";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const UserPerfile = () => {

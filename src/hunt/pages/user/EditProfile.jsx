@@ -1,6 +1,6 @@
-import images from "../../assets/images";
-import { Drawer } from "../../ui/components/Drawer";
-import { Navbar } from "../../ui/components/Navbar";
+import images from "../../../assets/images";
+import { Drawer } from "../../../ui/components/products/Drawer";
+import { Navbar } from "../../../ui/components/common/Navbar";
 import { NavLink } from "react-router-dom";
 
 export const EditProfile = () => {

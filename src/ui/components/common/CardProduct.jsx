@@ -1,4 +1,4 @@
-import icons from "../../assets/icons";
+import icons from "../../../assets/icons";
 import { NavLink } from "react-router-dom";
 
 export const CardProduct = (props) => {
