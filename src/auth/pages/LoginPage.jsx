@@ -3,31 +3,52 @@ import { useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../context";
 import { Navbar } from "../../ui/components/common/Navbar";
+import { useForm } from "../../hooks";
+
+const initForm = {
+  email: "",
+  password: "",
+};
 
 export const LoginPage = () => {
-  const { login } = useContext(AuthContext);
+  const { login, errorMessage } = useContext(AuthContext);
 
-  const onLogin = () => {
-    login("Anthony");
+  const navigate = useNavigate();
+
+  const { email, password, onInputChange } = useForm(initForm);
+
+  const onLogin = async (event) => {
+    event.preventDefault();
+    const isValidLogin = await login(email, password);
+
+    if (isValidLogin) {
+      const lastPath = localStorage.getItem("lastPath") || "/";
+      navigate(lastPath, {
+        replace: true,
+      });
+    }
   };
 
   return (
     <>
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <div className="max-w-md w-full bg-white p-8 shadow-lg rounded-lg">
-          <h2 className="text-2xl font-bold mb-4">Iniciar sesión</h2>
+          <h2 className="text-2xl font-bold mb-4">Login</h2>
           <form>
             <div className="mb-4">
               <label
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
-                Correo electrónico
+                Email
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
+                value={email}
+                onChange={onInputChange}
+                placeholder="Enter email"
                 className="mt-1 p-2 w-full border rounded-md"
               />
             </div>
@@ -36,12 +57,15 @@ export const LoginPage = () => {
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
               >
-                Contraseña
+                password
               </label>
               <input
                 type="password"
                 id="password"
                 name="password"
+                value={password}
+                onChange={onInputChange}
+                placeholder="Enter password"
                 className="mt-1 p-2 w-full border rounded-md"
               />
             </div>
@@ -52,6 +76,12 @@ export const LoginPage = () => {
             >
               Login
             </button>
+            <br />
+            {!errorMessage ? null : (
+              <div className="alert alert-danger" role="alert">
+                {errorMessage}
+              </div>
+            )}
           </form>
         </div>
       </div>
