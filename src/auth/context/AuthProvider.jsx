@@ -1,8 +1,13 @@
 import { useReducer } from "react";
-import { authReducer } from "../reducers/authReducer";
-import { types } from "../types";
+
 import { AuthContext } from "./AuthContext";
-import { authUserWithEmailPassword } from "../../firebase/providers";
+import { authReducer } from "../reducers";
+import { authTypes } from "../types";
+import {
+  signInUser,
+  logoutUser,
+  singInWithGoogle,
+} from "../../firebase/providers";
 
 const initialState = { logged: false };
 
@@ -17,37 +22,68 @@ const init = () => {
 export const AuthProvider = ({ children }) => {
   const [authState, dispatch] = useReducer(authReducer, initialState, init);
 
-  const login = async (email, password) => {
-    const { ok, uid, displayName, photoURL, errorMessage } =
-      await authUserWithEmailPassword(email, password);
+  const login = async (email = "", password = "") => {
+    const { ok, uid, photoURL, displayName, errorMessage } = await signInUser(
+      email,
+      password
+    );
 
     if (!ok) {
-      dispatch({ type: types.error, payload: { errorMessage } });
+      dispatch({ type: authTypes.error, payload: { errorMessage } });
+      return false;
     }
 
-    const payload = { ok, uid, email, displayName, photoURL, errorMessage };
+    const payload = { uid, email, photoURL, displayName, email };
 
-    const action = { type: types.login, payload: payload };
+    const action = { type: authTypes.login, payload };
 
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("user", JSON.stringify(payload));
 
     dispatch(action);
 
     return true;
   };
 
-  const logout = () => {
-    localStorage.removeItem("user");
-    const action = { type: types.logout };
+  const loginGoogle = async () => {
+    const {
+      ok,
+      uid,
+      photoURL,
+      displayName,
+      email: googleEmail,
+      errorMessage,
+    } = await singInWithGoogle();
+
+    if (!ok) {
+      dispatch({ type: authTypes.error, payload: { errorMessage } });
+      return false;
+    }
+
+    const payload = { uid, googleEmail, photoURL, displayName };
+
+    const action = { type: authTypes.login, payload };
+
+    localStorage.setItem("user", JSON.stringify(payload));
+
     dispatch(action);
+
+    return true;
+  };
+
+  const logout = async () => {
+    await logoutUser();
+
+    localStorage.removeItem("user");
+    dispatch({ type: authTypes.logout });
   };
 
   return (
     <AuthContext.Provider
       value={{
         ...authState,
-        login: login,
-        logout: logout,
+        login,
+        logout,
+        loginGoogle,
       }}
     >
       {children}

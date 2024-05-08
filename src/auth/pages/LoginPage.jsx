@@ -11,7 +11,7 @@ const initForm = {
 };
 
 export const LoginPage = () => {
-  const { login, errorMessage } = useContext(AuthContext);
+  const { login, errorMessage, loginGoogle } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -20,6 +20,18 @@ export const LoginPage = () => {
   const onLogin = async (event) => {
     event.preventDefault();
     const isValidLogin = await login(email, password);
+
+    if (isValidLogin) {
+      const lastPath = localStorage.getItem("lastPath") || "/";
+      navigate(lastPath, {
+        replace: true,
+      });
+    }
+  };
+
+  const onGoogleLogin = async (event) => {
+    event.preventDefault();
+    const isValidLogin = await loginGoogle();
 
     if (isValidLogin) {
       const lastPath = localStorage.getItem("lastPath") || "/";
@@ -75,6 +87,13 @@ export const LoginPage = () => {
               className="w-full bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700"
             >
               Login
+            </button>
+            <button
+              onClick={onGoogleLogin}
+              type="submit"
+              className="w-full bg-teal-400 text-white py-2 rounded-md hover:bg-teal-700"
+            >
+              Google
             </button>
             <br />
             {!errorMessage ? null : (
