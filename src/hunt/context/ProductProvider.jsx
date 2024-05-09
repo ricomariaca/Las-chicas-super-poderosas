@@ -21,7 +21,7 @@ export const ProductProvider = ({children}) => {
     
         try {
             console.log(product)
-            const newProduct = doc(collection(FirebaseDB, `${user.uid}/products_Hunt/products`));
+            const newProduct = doc(collection(FirebaseDB, "products"));
            
             console.log(newProduct)
 
@@ -43,7 +43,8 @@ export const ProductProvider = ({children}) => {
         <ProductContext.Provider value={
             {
                 ...productState,
-                saveProduct
+                saveProduct,
+                user
             }
         }> 
         {children}
