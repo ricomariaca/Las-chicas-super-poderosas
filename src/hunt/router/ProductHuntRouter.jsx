@@ -7,6 +7,7 @@ import { LoginPage } from "../../auth";
 import { ProductList } from "../pages/products/ProductList";
 import { AddProduct } from "../pages/products/AddProduct";
 import { EditProfile } from "../pages/user/EditProfile";
+import { PublicProducts } from "../pages/products/PublicProducts";
 
 export const ProductHuntRouter = () => {
   return (
@@ -16,6 +17,7 @@ export const ProductHuntRouter = () => {
 
         <Route path="/perfil" element={<UserPerfile />} />
         <Route path="/productViewlog" element={<ProductView />} />
+        <Route path="/publicProductslog" element={<PublicProducts />} />
 
         <Route path="/myProducts" element={<ProductList />} />
         <Route path="/addPoduct" element={<AddProduct />} />

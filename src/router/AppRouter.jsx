@@ -6,6 +6,7 @@ import { ProductHuntRouter } from "../hunt/router/ProductHuntRouter";
 import { ProductHome } from "../hunt/pages/ProductHome";
 import { ProductView } from "../hunt/pages/products/ProductView";
 import { ProductProvider } from "../hunt/context";
+import { PublicProducts } from "../hunt/pages/products/PublicProducts";
 
 export const AppRouter = () => {
   return (
@@ -33,6 +34,14 @@ export const AppRouter = () => {
           element={
             <PublicRouter>
               <RegisterPage />
+            </PublicRouter>
+          }
+        />
+        <Route
+          path="/publicProducts"
+          element={
+            <PublicRouter>
+              <PublicProducts />
             </PublicRouter>
           }
         />
