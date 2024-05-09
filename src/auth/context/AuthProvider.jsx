@@ -7,6 +7,7 @@ import {
   signInUser,
   logoutUser,
   singInWithGoogle,
+  registerUser,
 } from "../../firebase/providers";
 
 const initialState = { logged: false };
@@ -77,6 +78,27 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: authTypes.logout });
   };
 
+  const register = async (email, password, displayName) => {
+    const { ok, errorMessage, photoURL, uid } = await registerUser({
+      email,
+      displayName,
+      password,
+    });
+
+    const payload = {
+      uid,
+      email,
+      photoURL,
+      displayName,
+    };
+    const action = { type: authTypes.login, payload };
+    localStorage.setItem("user", JSON.stringify(payload));
+
+    dispatch(action);
+
+    return true;
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -84,6 +106,7 @@ export const AuthProvider = ({ children }) => {
         login,
         logout,
         loginGoogle,
+        register,
       }}
     >
       {children}

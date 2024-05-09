@@ -1,43 +1,28 @@
 import { useContext } from "react";
-import { useNavigate, Link, NavLink } from "react-router-dom";
-
-import { AuthContext } from "../context";
-import { Navbar } from "../../ui/components/common/Navbar";
+import { AuthContext } from "../context/AuthContext";
 import { useForm } from "../../hooks";
+import { Link, useNavigate } from "react-router-dom";
 
 const initForm = {
   email: "",
   password: "",
+  displayName: "",
 };
-
-export const LoginPage = () => {
-  const { login, errorMessage, loginGoogle } = useContext(AuthContext);
+export const RegisterPage = () => {
+  const { register, errorMessage } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
-  const { email, password, onInputChange } = useForm(initForm);
+  const { email, password, displayName, onInputChange } = useForm(initForm);
 
-  const onLogin = async (event) => {
+  const onRegister = async (event) => {
     event.preventDefault();
-    const isValidLogin = await login(email, password);
 
-    if (isValidLogin) {
+    const isValidRegister = await register(email, password, displayName);
+
+    if (isValidRegister) {
       const lastPath = localStorage.getItem("lastPath") || "/";
-      navigate(lastPath, {
-        replace: true,
-      });
-    }
-  };
-
-  const onGoogleLogin = async (event) => {
-    event.preventDefault();
-    const isValidLogin = await loginGoogle();
-
-    if (isValidLogin) {
-      const lastPath = localStorage.getItem("lastPath") || "/";
-      navigate(lastPath, {
-        replace: true,
-      });
+      navigate(lastPath, { replace: true });
     }
   };
 
@@ -45,8 +30,25 @@ export const LoginPage = () => {
     <>
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <div className="max-w-md w-full bg-white p-8 shadow-lg rounded-lg">
-          <h2 className="text-2xl font-bold mb-4">Login</h2>
+          <h2 className="text-2xl font-bold mb-4">Register</h2>
           <form>
+            <div className="mb-4">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                User name
+              </label>
+              <input
+                type="text"
+                id="displayName"
+                name="displayName"
+                value={displayName}
+                onChange={onInputChange}
+                placeholder="Enter user name"
+                className="mt-1 p-2 w-full border rounded-md"
+              />
+            </div>
             <div className="mb-4">
               <label
                 htmlFor="email"
@@ -82,18 +84,11 @@ export const LoginPage = () => {
               />
             </div>
             <button
-              onClick={onLogin}
+              onClick={onRegister}
               type="submit"
               className="w-full bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700"
             >
-              Login
-            </button>
-            <button
-              onClick={onGoogleLogin}
-              type="submit"
-              className="w-full bg-teal-400 text-white py-2 rounded-md hover:bg-teal-700"
-            >
-              Google
+              Register
             </button>
             <br />
             {!errorMessage ? null : (
@@ -102,8 +97,8 @@ export const LoginPage = () => {
               </div>
             )}
           </form>
-          <span>Do you want create a new account?</span>
-          <Link to="/register"> Register</Link>
+          <span>Do you have an existing account?</span>
+          <Link to="/login"> Login</Link>
         </div>
       </div>
     </>
