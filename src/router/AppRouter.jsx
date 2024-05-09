@@ -51,7 +51,7 @@ export const AppRouter = () => {
           element={
             <PrivateRouter>
               <ProductProvider>
-                <ProductHuntRouter/>
+                <ProductHuntRouter />
               </ProductProvider>
             </PrivateRouter>
           }

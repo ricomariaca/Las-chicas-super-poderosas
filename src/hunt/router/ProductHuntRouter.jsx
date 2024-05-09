@@ -15,7 +15,7 @@ export const ProductHuntRouter = () => {
         <Route path="/ProductHunt" element={<ProductHome />} />
 
         <Route path="/perfil" element={<UserPerfile />} />
-        <Route path="/productView" element={<ProductView />} />
+        <Route path="/productViewlog" element={<ProductView />} />
 
         <Route path="/myProducts" element={<ProductList />} />
         <Route path="/addPoduct" element={<AddProduct />} />
