@@ -1,12 +1,10 @@
 import React, { useContext, useReducer } from 'react'
 import { productReducer } from '../reducers/productReducer'
 import { AuthContext } from '../../auth'
-//import { doc, collection, setDoc } from 'firebase/firestore/lite'
 import { FirebaseDB } from '../../firebase/config'
 import { productTypes } from '../types'
 import { ProductContext } from './ProductContext'
 import { collection, doc, setDoc } from 'firebase/firestore/lite'
-
 
 const initialState = {
     product: []

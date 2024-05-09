@@ -2,7 +2,7 @@ import { collection, getDocs } from "firebase/firestore/lite";
 import { FirebaseDB } from "../../firebase/config";
  
 export const loadProducts = async () => {
-    const collectionRef = collection(FirebaseDB, `${uid}/products_Hunt/products`);
+    const collectionRef = collection(FirebaseDB, "products");
  
     const docs = await getDocs(collectionRef);
    
