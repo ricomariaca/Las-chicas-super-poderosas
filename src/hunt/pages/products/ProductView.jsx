@@ -3,10 +3,11 @@ import { Navbar } from "../../../ui/components/common/Navbar";
 import { StarRating } from "../../../ui/components/common/StarRating";
 import { BsChatRight } from "react-icons/bs";
 import { CiUser } from "react-icons/ci";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ReviewContext } from "../../context";
 import { useForm } from "../../../hooks";
 import icons from "../../../assets/icons";
+import { loadReview } from "../../helpers/loadReview"
 
 const newEmptyReview = {
 
@@ -15,11 +16,25 @@ const newEmptyReview = {
 }
 
 export const ProductView = () => {
-
-
   const { saveReview, user } = useContext(ReviewContext);
   console.log(user)
   const { Review, star, onInputChange } = useForm(newEmptyReview)
+  const [review, setReview] = useState([]);
+
+  useEffect(() => {
+    const fetchReview = async () => {
+      try {
+        const productsData = await loadReview();
+        setReview(productsData);
+      } catch (error) {
+        console.error("Error fetching Review", error);
+      }
+    };
+    fetchReview();
+  }, []);
+
+
+
 
   const onCreateReview = async (event) => {
     event.preventDefault();
@@ -92,10 +107,10 @@ export const ProductView = () => {
             src={icons.user}
             alt="User Icon"
             className="w-8 h-8 cursor-pointer"
-            
+
           />
           {user?.displayName}
-          
+
           <StarRating onRatingChange={handleRatingChange} />
           <input id="Review" name="Review" onChange={onInputChange} value={Review} type="text" placeholder="Enter your comment" />
         </div>
@@ -112,14 +127,21 @@ export const ProductView = () => {
           product reviews
         </div>
         <div>
-          <div style={{ marginLeft: "100px" }} className="ml-12">
-            <CiUser size={30} />
-          </div>
-          <div style={{ marginLeft: "57px" }}>
-            <StarRating />
-            <input className="ml-4" type="text" placeholder="comment" />
-          </div>
+          <ul>
+            {review.map((review) =>
+            (
+              <li key={review.id}>
+                {user.uid}
+                {review.Review}
+                <br />
+                <span>La calificacion es  </span>
+                {review.star}
+              </li>
+            )
+            )}
+          </ul>
         </div>
+
       </div>
     </>
   );
