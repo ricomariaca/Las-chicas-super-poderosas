@@ -81,7 +81,9 @@ export const Navbar = () => {
                 </NavLink>
               </div>
 
-              <span className="mr-4 text-teal-600">{`Hello, ${user?.name}`}</span>
+              <span className="mr-4 text-teal-600">
+                {`Hello, ${user?.displayName}`}
+              </span>
               <div className="relative mr-20">
                 <img
                   src={icon.user}

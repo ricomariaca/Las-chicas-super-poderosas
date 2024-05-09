@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { LoginPage } from "../auth";
+import { LoginPage, RegisterPage } from "../auth";
 import { PublicRouter } from "./PublicRouter";
 import { PrivateRouter } from "./PrivateRouter";
 import { ProductHuntRouter } from "../hunt/router/ProductHuntRouter";
@@ -27,6 +27,15 @@ export const AppRouter = () => {
             </PublicRouter>
           }
         />
+        <Route
+          path="/register"
+          element={
+            <PublicRouter>
+              <RegisterPage />
+            </PublicRouter>
+          }
+        />
+
         <Route
           path="/productView"
           element={
