@@ -3,7 +3,46 @@ import { Navbar } from "../../../ui/components/common/Navbar";
 import { StarRating } from "../../../ui/components/common/StarRating";
 import { BsChatRight } from "react-icons/bs";
 import { CiUser } from "react-icons/ci";
+import { useContext } from "react";
+import { ReviewContext } from "../../context";
+import { useForm } from "../../../hooks";
+import icons from "../../../assets/icons";
+
+const newEmptyReview = {
+
+  Review: '',
+  star: '',
+}
+
 export const ProductView = () => {
+
+
+  const { saveReview, user } = useContext(ReviewContext);
+  console.log(user)
+  const { Review, star, onInputChange } = useForm(newEmptyReview)
+
+  const onCreateReview = async (event) => {
+    event.preventDefault();
+
+    const newReview = {
+
+      Review: Review,
+      userId: user.uid,
+      star: star,
+
+
+    };
+    await saveReview(newReview)
+
+
+
+
+  }
+  const handleRatingChange = (rating) => {
+    // Actualiza el estado de la calificación (star) cada vez que cambia
+    onInputChange({ target: { name: "star", value: rating } });
+  };
+
   return (
     <>
       <div>
@@ -49,12 +88,19 @@ export const ProductView = () => {
 
       <div className="grid grid-cols-2">
         <div className="my-3 ml-10 ">
-          <CiUser size={30} />
-          <StarRating />
-          <input type="text" placeholder="Enter your comment" />
+          <img
+            src={icons.user}
+            alt="User Icon"
+            className="w-8 h-8 cursor-pointer"
+            
+          />
+          {user?.displayName}
+          
+          <StarRating onRatingChange={handleRatingChange} />
+          <input id="Review" name="Review" onChange={onInputChange} value={Review} type="text" placeholder="Enter your comment" />
         </div>
         <div className="my-3">
-          <button className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">
+          <button className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded" onClick={onCreateReview} >
             Send
           </button>
         </div>
