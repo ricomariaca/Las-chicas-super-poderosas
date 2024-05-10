@@ -99,9 +99,8 @@ export const Navbar = () => {
               </span>
               <div className="relative mr-20">
                 <img
-                  src={icon.user}
-                  alt="User Icon"
-                  className="w-8 h-8 cursor-pointer"
+                  src={user?.photoURL}
+                  className="w-8 h-8 cursor-pointer rounded-full"
                   onClick={toggleMenu}
                 />
                 {showMenu && (

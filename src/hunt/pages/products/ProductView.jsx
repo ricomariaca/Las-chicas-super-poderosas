@@ -9,6 +9,7 @@ import { useForm } from "../../../hooks";
 import icons from "../../../assets/icons";
 import { loadReview } from "../../helpers/loadReview";
 import { AuthContext } from "../../../auth";
+import { Link } from "react-router-dom";
 
 const newEmptyReview = {
   Review: "",
@@ -90,15 +91,17 @@ export const ProductView = () => {
         </div>
       </div>
 
-      <div className="bg-teal-600 h-0.5"></div>
+      <div className="bg-gray-600 h-0.5 opacity-15"></div>
 
       <div className="grid grid-cols-2">
         <div className="my-3 ml-10 ">
-          <img
-            src={icons.user}
-            alt="User Icon"
-            className="w-8 h-8 cursor-pointer"
-          />
+          <div className="flex items-center">
+            <img
+              src={user?.photoURL}
+              className="w-8 h-8 cursor-pointer rounded-full mr-2"
+            />
+            <span className="mr-4">{user?.displayName}</span>
+          </div>
 
           <StarRating onRatingChange={handleRatingChange} />
           <input
@@ -111,7 +114,14 @@ export const ProductView = () => {
           />
         </div>
         <div className="my-3">
-          {!logged && <label htmlFor="">Jáaaa quisieras </label>}
+          {!logged && (
+            <>
+              <label htmlFor="">Si tanto quieres...</label> <br />
+              <Link to="/login" className="text-md text-blue-500">
+                login
+              </Link>
+            </>
+          )}
 
           {logged && (
             <button
@@ -124,20 +134,24 @@ export const ProductView = () => {
         </div>
       </div>
 
-      <div className="bg-teal-600 h-0.5"></div>
+      <div className="bg-gray-600 h-0.5 opacity-15"></div>
 
-      <div className="my-3 ml-10 ">
-        <div style={{ marginLeft: "50px" }} className="text-xl font-bold ">
-          product reviews
-        </div>
+      <div className="my-3 ml-10 space-y-6">
+        <div className="text-xl font-bold">Product Reviews</div>
         <div>
           <ul>
             {review.map((review) => (
-              <li key={review.id}>
-                {review.Review}
-                <br />
-                <span>La calificacion es </span>
-                {review.star}
+              <li
+                key={review.id}
+                className="border rounded p-4 flex flex-col items-start space-y-2 my-4"
+              >
+                <div>
+                  <img src={icons.user} className="w-7 h-7" />
+                  <span className="font-bold">Calificación:</span> {review.star}
+                </div>
+                <div>
+                  <span className="font-bold">Comentario:</span> {review.Review}
+                </div>
               </li>
             ))}
           </ul>

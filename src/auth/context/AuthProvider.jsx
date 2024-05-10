@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
       return false;
     }
 
-    const payload = { uid, email, photoURL, displayName, email };
+    const payload = { uid, photoURL, displayName, email };
 
     const action = { type: authTypes.login, payload };
 

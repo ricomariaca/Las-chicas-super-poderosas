@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import images from "../../../assets/images";
+import { AuthContext } from "../../../auth";
 import { Navbar } from "../../../ui/components/common/Navbar";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const UserPerfile = () => {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <Navbar />
@@ -14,8 +17,8 @@ export const UserPerfile = () => {
 
       <div className="text-center mb-7">
         <img
-          src={images.img5}
-          className="w-27 h-32 mx-auto rounded-lg shadow-md"
+          src={user?.photoURL}
+          className="w-27 h-32 mx-auto rounded-full"
           alt="Profile Picture"
         />
       </div>
@@ -24,12 +27,12 @@ export const UserPerfile = () => {
         <form className="space-y-6" action="#" method="POST">
           <div>
             <span className="font-bold">User name*</span>
-            <h1>María José Velásquez</h1>
+            <h1>{user?.displayName}</h1>
           </div>
 
           <div>
             <span className="font-bold">E-mail*</span>
-            <h1>mariajose72003@gmail.com</h1>
+            <h1>{user?.googleEmail}</h1>
           </div>
 
           <div>

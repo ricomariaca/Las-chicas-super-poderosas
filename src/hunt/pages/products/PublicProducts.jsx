@@ -25,7 +25,7 @@ export const PublicProducts = () => {
   return (
     <>
       <Navbar />
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-screen mt-80">
         <div className="max-w-4xl w-full px-4">
           <div className="flex flex-col md:flex-row items-center">
             <div className="w-full">
@@ -33,16 +33,16 @@ export const PublicProducts = () => {
                 <h2 className="text-2xl font-bold mr-4">All Product</h2>
                 <img src={icons.icProduct} alt="Banner" className="w-12 h-12" />
               </div>
-              <ul className="grid grid-cols-1 gap-4">
+              <ul className="grid grid-cols-1 gap-4 mt-8">
                 {products.map((product) => (
-                  <li
+                  <div
                     key={product.id}
-                    className="flex flex-col items-center md:flex-row"
+                    className="border rounded p-4 flex items-center"
                   >
                     {!logged && (
                       <NavLink
                         to="/productView"
-                        className="nav-link text-teal-600 mr-96"
+                        className="nav-link text-teal-600 mr-4"
                       >
                         <img
                           src={product.ProductURL}
@@ -55,7 +55,7 @@ export const PublicProducts = () => {
                       <>
                         <NavLink
                           to="/productViewlog"
-                          className="nav-link text-teal-600 mr-96"
+                          className="nav-link text-teal-600 mr-4"
                         >
                           <img
                             src={product.ProductURL}
@@ -65,12 +65,12 @@ export const PublicProducts = () => {
                       </>
                     )}
 
-                    <div>
+                    <div className="flex flex-col">
                       <h1>{product.name}</h1>
                       <p>Tage: {product.Tage}</p>
                       <p>Description: {product.ProductDescription}</p>
                     </div>
-                  </li>
+                  </div>
                 ))}
               </ul>
             </div>
