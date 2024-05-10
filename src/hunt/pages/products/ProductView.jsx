@@ -131,7 +131,7 @@ export const ProductView = () => {
             {review.map((review) =>
             (
               <li key={review.id}>
-                {user.uid}
+                
                 {review.Review}
                 <br />
                 <span>La calificacion es  </span>
