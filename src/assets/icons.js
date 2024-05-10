@@ -10,6 +10,7 @@ import YouT from './icon/YouT.png'
 import submit from './icon/submit.png'
 import totalR from './icon/totalR.png'
 import star from './icon/stars.png'
+import icProduct from './icon/IcProduct.png'
 
 export default {
     "icon1": iconoins,
@@ -22,7 +23,8 @@ export default {
     "YouT": YouT,
     "submit": submit,
     "totalR": totalR,
-    "stars": star
+    "stars": star,
+    "icProduct": icProduct
     
     
 }
