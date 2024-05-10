@@ -8,6 +8,7 @@ import { ReviewContext } from "../../context";
 import { useForm } from "../../../hooks";
 import icons from "../../../assets/icons";
 import { loadReview } from "../../helpers/loadReview";
+import { AuthContext } from "../../../auth";
 
 const newEmptyReview = {
   Review: "",
@@ -15,6 +16,7 @@ const newEmptyReview = {
 };
 
 export const ProductView = () => {
+  const { logged } = useContext(AuthContext);
   const { saveReview, user } = useContext(ReviewContext);
   console.log(user);
   const { Review, star, onInputChange } = useForm(newEmptyReview);
@@ -109,14 +111,19 @@ export const ProductView = () => {
           />
         </div>
         <div className="my-3">
-          <button
-            className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded"
-            onClick={onCreateReview}
-          >
-            Send
-          </button>
+          {!logged && <label htmlFor="">Jáaaa quisieras </label>}
+
+          {logged && (
+            <button
+              className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded"
+              onClick={onCreateReview}
+            >
+              Send
+            </button>
+          )}
         </div>
       </div>
+
       <div className="bg-teal-600 h-0.5"></div>
 
       <div className="my-3 ml-10 ">

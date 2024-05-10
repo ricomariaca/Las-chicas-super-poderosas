@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { loadProducts } from "../../helpers/loadProducts";
 import { Navbar } from "../../../ui/components/common/Navbar";
 import icons from "../../../assets/icons";
+import { AuthContext } from "../../../auth";
+import { NavLink } from "react-router-dom";
 
 export const PublicProducts = () => {
+  const { logged } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -36,10 +39,32 @@ export const PublicProducts = () => {
                     key={product.id}
                     className="flex flex-col items-center md:flex-row"
                   >
-                    <img
-                      src={product.ProductURL}
-                      className="w-16 h-16 mb-2 md:mr-2"
-                    />
+                    {!logged && (
+                      <NavLink
+                        to="/productView"
+                        className="nav-link text-teal-600 mr-96"
+                      >
+                        <img
+                          src={product.ProductURL}
+                          className="w-16 h-16 mb-2 md:mr-2"
+                        />
+                      </NavLink>
+                    )}
+
+                    {logged && (
+                      <>
+                        <NavLink
+                          to="/productViewlog"
+                          className="nav-link text-teal-600 mr-96"
+                        >
+                          <img
+                            src={product.ProductURL}
+                            className="w-16 h-16 mb-2 md:mr-2"
+                          />
+                        </NavLink>
+                      </>
+                    )}
+
                     <div>
                       <h1>{product.name}</h1>
                       <p>Tage: {product.Tage}</p>
