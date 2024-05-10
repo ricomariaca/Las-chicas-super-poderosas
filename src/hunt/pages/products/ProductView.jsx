@@ -3,7 +3,52 @@ import { Navbar } from "../../../ui/components/common/Navbar";
 import { StarRating } from "../../../ui/components/common/StarRating";
 import { BsChatRight } from "react-icons/bs";
 import { CiUser } from "react-icons/ci";
+import { useContext, useEffect, useState } from "react";
+import { ReviewContext } from "../../context";
+import { useForm } from "../../../hooks";
+import icons from "../../../assets/icons";
+import { loadReview } from "../../helpers/loadReview";
+import { AuthContext } from "../../../auth";
+
+const newEmptyReview = {
+  Review: "",
+  star: "",
+};
+
 export const ProductView = () => {
+  const { logged } = useContext(AuthContext);
+  const { saveReview, user } = useContext(ReviewContext);
+  console.log(user);
+  const { Review, star, onInputChange } = useForm(newEmptyReview);
+  const [review, setReview] = useState([]);
+
+  useEffect(() => {
+    const fetchReview = async () => {
+      try {
+        const productsData = await loadReview();
+        setReview(productsData);
+      } catch (error) {
+        console.error("Error fetching Review", error);
+      }
+    };
+    fetchReview();
+  }, []);
+
+  const onCreateReview = async (event) => {
+    event.preventDefault();
+
+    const newReview = {
+      Review: Review,
+      userId: user.uid,
+      star: star,
+    };
+    await saveReview(newReview);
+  };
+  const handleRatingChange = (rating) => {
+    // Actualiza el estado de la calificación (star) cada vez que cambia
+    onInputChange({ target: { name: "star", value: rating } });
+  };
+
   return (
     <>
       <div>
@@ -49,16 +94,36 @@ export const ProductView = () => {
 
       <div className="grid grid-cols-2">
         <div className="my-3 ml-10 ">
-          <CiUser size={30} />
-          <StarRating />
-          <input type="text" placeholder="Enter your comment" />
+          <img
+            src={icons.user}
+            alt="User Icon"
+            className="w-8 h-8 cursor-pointer"
+          />
+
+          <StarRating onRatingChange={handleRatingChange} />
+          <input
+            id="Review"
+            name="Review"
+            onChange={onInputChange}
+            value={Review}
+            type="text"
+            placeholder="Enter your comment"
+          />
         </div>
         <div className="my-3">
-          <button className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">
-            Send
-          </button>
+          {!logged && <label htmlFor="">Jáaaa quisieras </label>}
+
+          {logged && (
+            <button
+              className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded"
+              onClick={onCreateReview}
+            >
+              Send
+            </button>
+          )}
         </div>
       </div>
+
       <div className="bg-teal-600 h-0.5"></div>
 
       <div className="my-3 ml-10 ">
@@ -66,13 +131,16 @@ export const ProductView = () => {
           product reviews
         </div>
         <div>
-          <div style={{ marginLeft: "100px" }} className="ml-12">
-            <CiUser size={30} />
-          </div>
-          <div style={{ marginLeft: "57px" }}>
-            <StarRating />
-            <input className="ml-4" type="text" placeholder="comment" />
-          </div>
+          <ul>
+            {review.map((review) => (
+              <li key={review.id}>
+                {review.Review}
+                <br />
+                <span>La calificacion es </span>
+                {review.star}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </>

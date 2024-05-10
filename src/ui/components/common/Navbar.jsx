@@ -50,20 +50,33 @@ export const Navbar = () => {
                 About us
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/" className="nav-link text-teal-600 mr-20">
-                Products
-              </NavLink>
-            </li>
-
             {!logged && (
               <li>
-                <NavLink to="/login" className="nav-link text-teal-600 mr-96">
-                  Login
+                <NavLink
+                  to="/publicProducts"
+                  className="nav-link text-teal-600 mr-20"
+                >
+                  Products
                 </NavLink>
               </li>
             )}
           </ul>
+          {logged && (
+            <>
+              <NavLink
+                to="/publicProductslog"
+                className="nav-link text-teal-600 mr-20"
+              >
+                Products
+              </NavLink>
+            </>
+          )}
+
+          {!logged && (
+            <NavLink to="/login" className="nav-link text-teal-600 mr-96">
+              Login
+            </NavLink>
+          )}
 
           {logged && (
             <>
