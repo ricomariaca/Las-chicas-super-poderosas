@@ -7,18 +7,17 @@ import { useContext, useEffect, useState } from "react";
 import { ReviewContext } from "../../context";
 import { useForm } from "../../../hooks";
 import icons from "../../../assets/icons";
-import { loadReview } from "../../helpers/loadReview"
+import { loadReview } from "../../helpers/loadReview";
 
 const newEmptyReview = {
-
-  Review: '',
-  star: '',
-}
+  Review: "",
+  star: "",
+};
 
 export const ProductView = () => {
   const { saveReview, user } = useContext(ReviewContext);
-  console.log(user)
-  const { Review, star, onInputChange } = useForm(newEmptyReview)
+  console.log(user);
+  const { Review, star, onInputChange } = useForm(newEmptyReview);
   const [review, setReview] = useState([]);
 
   useEffect(() => {
@@ -33,26 +32,16 @@ export const ProductView = () => {
     fetchReview();
   }, []);
 
-
-
-
   const onCreateReview = async (event) => {
     event.preventDefault();
 
     const newReview = {
-
       Review: Review,
       userId: user.uid,
       star: star,
-
-
     };
-    await saveReview(newReview)
-
-
-
-
-  }
+    await saveReview(newReview);
+  };
   const handleRatingChange = (rating) => {
     // Actualiza el estado de la calificación (star) cada vez que cambia
     onInputChange({ target: { name: "star", value: rating } });
@@ -107,15 +96,23 @@ export const ProductView = () => {
             src={icons.user}
             alt="User Icon"
             className="w-8 h-8 cursor-pointer"
-
           />
-          {user?.displayName}
 
           <StarRating onRatingChange={handleRatingChange} />
-          <input id="Review" name="Review" onChange={onInputChange} value={Review} type="text" placeholder="Enter your comment" />
+          <input
+            id="Review"
+            name="Review"
+            onChange={onInputChange}
+            value={Review}
+            type="text"
+            placeholder="Enter your comment"
+          />
         </div>
         <div className="my-3">
-          <button className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded" onClick={onCreateReview} >
+          <button
+            className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded"
+            onClick={onCreateReview}
+          >
             Send
           </button>
         </div>
@@ -128,20 +125,16 @@ export const ProductView = () => {
         </div>
         <div>
           <ul>
-            {review.map((review) =>
-            (
+            {review.map((review) => (
               <li key={review.id}>
-                
                 {review.Review}
                 <br />
-                <span>La calificacion es  </span>
+                <span>La calificacion es </span>
                 {review.star}
               </li>
-            )
-            )}
+            ))}
           </ul>
         </div>
-
       </div>
     </>
   );

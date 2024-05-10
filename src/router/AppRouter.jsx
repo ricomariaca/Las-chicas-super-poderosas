@@ -50,7 +50,9 @@ export const AppRouter = () => {
           path="/productView"
           element={
             <PublicRouter>
-              <ProductView />
+              <ReviewProvider>
+                <ProductView />
+              </ReviewProvider>
             </PublicRouter>
           }
         />
