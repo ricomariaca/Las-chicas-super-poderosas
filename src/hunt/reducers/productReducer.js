@@ -6,7 +6,7 @@ export const productReducer = (state = {}, action) => {
         case productTypes.saveProduct:
             return {
                 ...state,
-                product: state.product.push(action.payload)
+                product: [state.product.push(action.payload)]
             }
         default:
             return state;

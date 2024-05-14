@@ -9,7 +9,7 @@ export const CardProduct = (props) => {
     <>
       {!logged && (
         <NavLink to="/productView" className="nav-link text-teal-600 mr-96">
-          <img src={`../../../src/assets/img/${props.url}`} />
+          <img src={props.url} />
         </NavLink>
       )}
 
@@ -19,7 +19,7 @@ export const CardProduct = (props) => {
             to="/productViewlog"
             className="nav-link text-teal-600 mr-96"
           >
-            <img src={`../../../src/assets/img/${props.url}`} />
+            <img src={props.url} />
           </NavLink>
         </>
       )}

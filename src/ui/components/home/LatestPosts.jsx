@@ -1,8 +1,24 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { CardProduct } from "../common/CardProduct";
+import { useEffect, useState } from "react";
+import { loadProducts } from "../../../hunt/helpers/loadProducts";
 
 export const LatestPosts = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const productsData = await loadProducts();
+        setProducts(productsData);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1024 },
@@ -21,56 +37,12 @@ export const LatestPosts = () => {
       items: 1,
     },
   };
-  const ProducData = [
-    {
-      id: 1,
-      imageurl: "portatil.jpg",
-      name: "Title1",
-      description: "aaa",
-    },
-    {
-      id: 2,
-      imageurl: "celular.jpg",
-      name: "Title2",
-      description: "aaa",
-    },
-    {
-      id: 3,
-      imageurl: "celular2.jpg",
-      name: "Title3",
-      description: "aaa",
-    },
-    {
-      id: 4,
-      imageurl: "portatil2.jpg",
-      name: "Title4",
-      description: "aaa",
-    },
-    {
-      id: 5,
-      imageurl: "reloj3.jpg",
-      name: "Title5",
-      description: "aaa",
-    },
-    {
-      id: 6,
-      imageurl: "reloj2.jpg",
-      name: "Title5",
-      description: "aaa",
-    },
-    {
-      id: 7,
-      imageurl: "reloj.jpg",
-      name: "Title5",
-      description: "aaa",
-    },
-  ];
 
-  const card = ProducData.map((item) => (
+  const card = products.map((products) => (
     <CardProduct
-      name={item.name}
-      url={item.imageurl}
-      description={item.description}
+      name={products.name}
+      url={products.ProductURL}
+      description={products.ProductDescription}
     />
   ));
 
