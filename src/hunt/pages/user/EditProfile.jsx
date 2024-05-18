@@ -2,8 +2,11 @@ import images from "../../../assets/images";
 import { Drawer } from "../../../ui/components/products/Drawer";
 import { Navbar } from "../../../ui/components/common/Navbar";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../../auth";
+import { useContext } from "react";
 
 export const EditProfile = () => {
+  const { user } = useContext(AuthContext);
   return (
     <>
       <Navbar />
@@ -14,11 +17,11 @@ export const EditProfile = () => {
         </h2>
 
         <div className="text-center mb-2">
-          <img
-            src={images.img5}
-            className="w-30 h-40 mx-auto rounded-lg shadow-md"
-            alt="Profile Picture"
-          />
+        <img
+          src={user?.photoURL}
+          className="w-27 h-32 mx-auto rounded-full"
+          alt="Profile Picture"
+        />
         </div>
         <p className="mt-2 mb-6 text-lg leading-8 text-gray-800">
           Edit your personal information
