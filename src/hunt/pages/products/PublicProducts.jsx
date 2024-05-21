@@ -4,7 +4,7 @@ import { Navbar } from "../../../ui/components/common/Navbar";
 import icons from "../../../assets/icons";
 import { AuthContext } from "../../../auth";
 import { NavLink } from "react-router-dom";
-import { deleteProduct } from "../../helpers/productDelete"
+
 
 export const PublicProducts = () => {
   const { logged } = useContext(AuthContext);
@@ -22,16 +22,6 @@ export const PublicProducts = () => {
 
     fetchProducts();
   }, []);
-
-  const delate  = async (productId) => {
-    try {
-      await deleteProduct(productId);
-      setProducts(products.filter((product) => product.id !== productId));
-    } catch (error) {
-      console.error("Error deleting product:", error);
-    }
-  };
-
 
   return (
     <>
@@ -81,23 +71,6 @@ export const PublicProducts = () => {
                       <p>Tage: {product.Tage}</p>
                       <p>Description: {product.ProductDescription}</p>
                     </div>
-
-                    {logged && (
-                      <div className="flex flex-col md:flex-row ml-auto">
-                        <button
-                          className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
-                          onClick={() => handleEdit(product.id)}
-                        >
-                          Editar
-                        </button>
-                        <button
-                          className="bg-red-500 text-white px-4 py-2 rounded"
-                          onClick={() => delate (product.id)}
-                        >
-                          Eliminar
-                        </button>
-                      </div>
-                    )}
                   </div>
                 ))}
               </ul>
