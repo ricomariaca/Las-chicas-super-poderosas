@@ -5,7 +5,11 @@ import { PrivateRouter } from "./PrivateRouter";
 import { ProductHuntRouter } from "../hunt/router/ProductHuntRouter";
 import { ProductHome } from "../hunt/pages/ProductHome";
 import { ProductView } from "../hunt/pages/products/ProductView";
-import { ProductProvider, ReviewProvider } from "../hunt/context";
+import {
+  ProductProvider,
+  ReviewContext,
+  ReviewProvider,
+} from "../hunt/context";
 import { PublicProducts } from "../hunt/pages/products/PublicProducts";
 
 export const AppRouter = () => {
@@ -16,7 +20,9 @@ export const AppRouter = () => {
           path="/home"
           element={
             <PublicRouter>
-              <ProductHome />
+              <ReviewProvider>
+                <ProductHome />
+              </ReviewProvider>
             </PublicRouter>
           }
         />

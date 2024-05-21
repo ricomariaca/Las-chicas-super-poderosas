@@ -3,6 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import { CardProduct } from "../common/CardProduct";
 import { useEffect, useState } from "react";
 import { loadProducts } from "../../../hunt/helpers/loadProducts";
+import { ProductView } from "../../../hunt/pages/products/ProductView";
 
 export const LatestPosts = () => {
   const [products, setProducts] = useState([]);
@@ -40,6 +41,7 @@ export const LatestPosts = () => {
 
   const card = products.map((products) => (
     <CardProduct
+      key={products.userId}
       name={products.name}
       url={products.ProductURL}
       description={products.ProductDescription}

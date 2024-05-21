@@ -4,7 +4,7 @@ import { StarRating } from "../../../ui/components/common/StarRating";
 import { BsChatRight } from "react-icons/bs";
 import { CiUser } from "react-icons/ci";
 import { useContext, useEffect, useState } from "react";
-import { ReviewContext } from "../../context";
+import { ProductContext, ReviewContext } from "../../context";
 import { useForm } from "../../../hooks";
 import icons from "../../../assets/icons";
 import { loadReview } from "../../helpers/loadReview";
@@ -16,10 +16,11 @@ const newEmptyReview = {
   star: "",
 };
 
-export const ProductView = () => {
+export const ProductView = (props) => {
   const { logged } = useContext(AuthContext);
   const { saveReview, user } = useContext(ReviewContext);
-  console.log(user);
+  const { product, ProductDescription } = useContext(ProductContext);
+
   const { Review, star, onInputChange } = useForm(newEmptyReview);
   const [review, setReview] = useState([]);
 
@@ -46,7 +47,6 @@ export const ProductView = () => {
     await saveReview(newReview);
   };
   const handleRatingChange = (rating) => {
-    // Actualiza el estado de la calificación (star) cada vez que cambia
     onInputChange({ target: { name: "star", value: rating } });
   };
 
@@ -65,7 +65,9 @@ export const ProductView = () => {
 
         <div className="my-14 ">
           <h1 className="font-bold">Title</h1>
-          <span>Mkbook</span>
+          <span>
+            {product.name} {props.name}aaaaa
+          </span>
 
           <div className="my-8">
             <div>
@@ -80,8 +82,8 @@ export const ProductView = () => {
             <span>juan patricio de montana</span>
           </div>
           <div className="my-8">
-            <p className="font-bold">description</p>
-            <span>Una mkbook barata</span>
+            <p className="font-bold">description {ProductDescription}</p>
+            <span>{props.description}</span>
           </div>
         </div>
         <div className="max-w-screen-md mx-auto my-auto p-4">
