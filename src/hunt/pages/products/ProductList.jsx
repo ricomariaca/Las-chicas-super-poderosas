@@ -102,7 +102,7 @@ export const ProductList = () => {
                             <div className="flex flex-col md:flex-row ml-auto">
                               <NavLink
                                 to={`/EditProduct/${product.id}`}
-                                className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
+                                className="bg-teal-600 text-white px-4 py-2 rounded mr-2"
                               >
                                 Edit
                               </NavLink>
@@ -110,7 +110,7 @@ export const ProductList = () => {
                           </>
                         )}
                         <button
-                          className="bg-red-500 text-white px-4 py-2 rounded"
+                          className="bg-red-700 text-white px-4 py-2 rounded"
                           onClick={() => Delete(product.id)}
                         >
                           Delete
