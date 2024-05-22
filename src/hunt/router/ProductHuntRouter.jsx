@@ -8,6 +8,7 @@ import { ProductList } from "../pages/products/ProductList";
 import { AddProduct } from "../pages/products/AddProduct";
 import { EditProfile } from "../pages/user/EditProfile";
 import { PublicProducts } from "../pages/products/PublicProducts";
+import { EditProduct } from "../pages/products/EditProduct";
 
 export const ProductHuntRouter = () => {
   return (
@@ -24,6 +25,7 @@ export const ProductHuntRouter = () => {
 
         <Route path="/editprofile" element={<EditProfile />} />
         <Route path="/" element={<Navigate to="/home" />} />
+        <Route path="/editProduct/:productId" element={<EditProduct />} />
       </Routes>
     </>
   );
