@@ -124,7 +124,7 @@ export const ProductList = () => {
                     <div className="flex flex-col md:flex-row ml-auto">
                       <NavLink
                         to="/addPoduct"
-                        className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
+                        className="bg-teal-700 text-white px-4 py-2 rounded mr-2"
                       >
                         New product
                       </NavLink>

@@ -52,10 +52,15 @@ export const EditProduct = () => {
     <>
       <Navbar />
       <div className="container mx-auto mt-8">
-        <h2 className="text-2xl font-bold mb-4">Edit Product</h2>
+        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight mb-6 text-teal-700">
+          Edit Product
+        </h2>
         <form onSubmit={ProductUpdate}>
-          <div className="mb-4">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+          <div className="mb-4 w-1/2 mx-auto">
+            <label
+              htmlFor="name"
+              className="block  text-sm font-medium text-gray-700 mb-2"
+            >
               Name
             </label>
             <input
@@ -66,8 +71,11 @@ export const EditProduct = () => {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <div className="mb-4">
-            <label htmlFor="productURL" className="block text-sm font-medium text-gray-700">
+          <div className="mb-4 w-1/2 mx-auto">
+            <label
+              htmlFor="productURL"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               Product URL
             </label>
             <input
@@ -78,8 +86,11 @@ export const EditProduct = () => {
               onChange={(e) => setProductURL(e.target.value)}
             />
           </div>
-          <div className="mb-4">
-            <label htmlFor="tag" className="block text-sm font-medium text-gray-700">
+          <div className="mb-4 w-1/2 mx-auto">
+            <label
+              htmlFor="tag"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
               Tag
             </label>
             <input
@@ -90,24 +101,29 @@ export const EditProduct = () => {
               onChange={(e) => setTag(e.target.value)}
             />
           </div>
-          <div className="mb-4">
-            <label htmlFor="productDescription" className="block text-sm font-medium text-gray-700">
-              Product Description
-            </label>
-            <textarea
-              id="productDescription"
-              className="mt-1 p-2 border border-gray-300 rounded-md w-full"
-              rows="4"
-              value={productDescription}
-              onChange={(e) => setProductDescription(e.target.value)}
-            ></textarea>
-          </div>
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          >
+
+          <div className="mb-4 w-1/2 mx-auto">
+  <label htmlFor="productDescription" className="block text-sm font-medium text-gray-700 mb-2">
+    Product Description
+  </label>
+  <textarea
+    id="productDescription"
+    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
+    rows="4"
+    value={productDescription}
+    onChange={(e) => setProductDescription(e.target.value)}
+  ></textarea>
+</div>
+
+
+<div className="flex justify-center w-full mb-4">
+  <button
+    type="submit"
+    className="bg-teal-700 text-white px-4 py-2 rounded mr-2"
+  >
             Update Product
           </button>
+          </div>
         </form>
       </div>
     </>
