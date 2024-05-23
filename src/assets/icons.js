@@ -11,6 +11,9 @@ import submit from './icon/submit.png'
 import totalR from './icon/totalR.png'
 import star from './icon/stars.png'
 import icProduct from './icon/IcProduct.png'
+import addp from './icon/addp.png'
+
+
 
 export default {
     "icon1": iconoins,
@@ -24,7 +27,9 @@ export default {
     "submit": submit,
     "totalR": totalR,
     "stars": star,
-    "icProduct": icProduct
+    "icProduct": icProduct,
+    "ADDP" : addp
+    
     
     
 }

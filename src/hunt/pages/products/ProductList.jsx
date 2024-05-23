@@ -54,16 +54,16 @@ export const ProductList = () => {
   return (
     <>
       <Navbar />
-      <div className="flex justify-center items-center h-screen mt-80">
+      <div className="mt-8 flex justify-center">
         <div className="max-w-4xl w-full px-4">
-          <div className="flex flex-col md:flex-row items-center">
+          <div className="flex flex-col items-center">
             <div className="w-full">
               <div className="flex justify-center items-center mb-4">
                 <h2 className="text-2xl font-bold mr-4">My Products</h2>
                 <select
                   value={selectedTag}
                   onChange={selecTag}
-                  className="border rounded p-2"
+                  className="border rounded p-2 ml-4"
                 >
                   <option value="">Select Tag</option>
                   <option value="TECHNOLOGY">TECHNOLOGY</option>
@@ -120,16 +120,14 @@ export const ProductList = () => {
                   ))}
                 </ul>
                 {logged && (
-                  <>
-                    <div className="flex flex-col md:flex-row ml-auto">
-                      <NavLink
-                        to="/addPoduct"
-                        className="bg-teal-700 text-white px-4 py-2 rounded mr-2"
-                      >
-                        New product
-                      </NavLink>
-                    </div>
-                  </>
+                  <div className="flex flex-col md:flex-row ml-auto mt-4">
+                    <NavLink
+                      to="/addPoduct"
+                      className="bg-teal-700 text-white px-4 py-2 rounded mr-2"
+                    >
+                      New product
+                    </NavLink>
+                  </div>
                 )}
               </div>
             </div>

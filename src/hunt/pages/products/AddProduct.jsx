@@ -3,6 +3,7 @@ import { Navbar } from "../../../ui/components/common/Navbar";
 import { ProductContext } from "../../context";
 import { useForm } from "../../../hooks";
 import images from "../../../assets/images";
+import icons from "../../../assets/icons";
 
 const newEmptyProduct = {
   name: "",
@@ -13,9 +14,10 @@ const newEmptyProduct = {
 
 export const AddProduct = () => {
   const { saveProduct, user } = useContext(ProductContext);
-  const { name, ProductURL, Tage, ProductDescription, onInputChange } =
+  const { name, ProductURL, Tage, ProductDescription, onInputChange, resetForm } =
     useForm(newEmptyProduct);
   const [selectedTage, setSelectedTage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const onCreateProduct = async (event) => {
     event.preventDefault();
@@ -27,7 +29,15 @@ export const AddProduct = () => {
       Tage: Tage || selectedTage,
       ProductDescription: ProductDescription,
     };
+
     await saveProduct(newProduct);
+
+    
+    setSuccessMessage("Producto agregado correctamente!");
+
+    
+    resetForm();
+    setSelectedTage('');
   };
 
   const handleTageChange = (event) => {
@@ -43,51 +53,55 @@ export const AddProduct = () => {
 
       <div className="text-center mb-6">
         <img
-          src={images.img4}
-          className="w-30 h-40 mx-auto rounded-lg shadow-md"
+          src={icons.ADDP}
+          className="w-20 h-20 mx-auto rounded-lg shadow-md"
           alt="Profile Picture"
         />
       </div>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        {successMessage && (
+          <div className="mb-4 p-4 text-green-700 bg-green-100 rounded-lg">
+            {successMessage}
+          </div>
+        )}
+
         <form className="space-y-6" onSubmit={onCreateProduct}>
-          <div className="flex justify-between ">
-            <div className="w-1/2 pl-0 mr-6 flex flex-col items-center">
-              <span className="font-bold">Name*</span>
-              <input
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
-                id="name"
-                name="name"
-                onChange={onInputChange}
-                value={name}
-              ></input>
-            </div>
+          <div className="block text-sm font-semibold leading-6 text-gray-900">
+            <span className="font-bold">Name*</span>
+            <input
+              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+              id="name"
+              name="name"
+              onChange={onInputChange}
+              value={name}
+            />
           </div>
 
           <div className="block text-sm font-semibold leading-6 text-gray-900">
-            <span className="font-bold ">Product URL*</span>
+            <span className="font-bold">Product URL*</span>
             <input
-              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
+              className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
               id="ProductURL"
               name="ProductURL"
               onChange={onInputChange}
               value={ProductURL}
-            ></input>
+            />
           </div>
 
           <div>
             <span className="font-bold">Tage*</span>
             <div className="relative mt-2 rounded-md shadow-sm">
               <input
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                 id="Tage"
                 name="Tage"
                 onChange={(e) => {
                   onInputChange(e);
-                  setSelectedTage(""); // Limpiar la opción seleccionada cuando se modifica el input
+                  setSelectedTage(""); 
                 }}
                 value={Tage}
-              ></input>
+              />
 
               <div className="absolute inset-y-0 right-0 flex items-center">
                 <select
@@ -108,7 +122,7 @@ export const AddProduct = () => {
           </div>
 
           <div className="block text-sm font-semibold leading-6 text-gray-900">
-            <span className="font-bold "> Product description*</span>
+            <span className="font-bold">Product Description*</span>
             <textarea
               id="ProductDescription"
               name="ProductDescription"
@@ -121,9 +135,9 @@ export const AddProduct = () => {
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-500 "
+              className="flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-500"
             >
-              add product
+              Add Product
             </button>
           </div>
         </form>
