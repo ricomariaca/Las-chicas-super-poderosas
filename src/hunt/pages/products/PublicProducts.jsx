@@ -38,17 +38,19 @@ export const PublicProducts = () => {
   return (
     <>
       <Navbar />
-      <div className="flex justify-center items-center h-screen mt-80">
+      <div className="mt-8 flex justify-center">
         <div className="max-w-4xl w-full px-4">
-          <div className="flex flex-col md:flex-row items-center">
+          <div className="flex flex-col items-center">
             <div className="w-full">
               <div className="flex justify-center items-center mb-4">
                 <h2 className="text-2xl font-bold mr-4">All Products</h2>
                 <img src={icons.icProduct} alt="Banner" className="w-12 h-12" />
+              </div>
+              <div className="flex justify-center items-center mb-10">
                 <select
                   value={selectedTag}
                   onChange={selecTag}
-                  className="border rounded p-2 ml-4"
+                  className="border rounded p-2"
                 >
                   <option value="">Select Tag</option>
                   <option value="TECHNOLOGY">TECHNOLOGY</option>
@@ -59,7 +61,7 @@ export const PublicProducts = () => {
                   <option value="HOME">HOME</option>
                 </select>
               </div>
-              <ul className="grid grid-cols-1 gap-4 mt-8">
+              <ul className="grid grid-cols-1 gap-4">
                 {filteredProducts.map((product) => (
                   <div
                     key={product.id}
