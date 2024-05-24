@@ -3,11 +3,12 @@ import { productTypes } from "../types";
 export const productReducer = (state = {}, action) => {
 
     switch (action.type) {
-        case productTypes.saveProduct:
+        case productTypes.selectedProduct:
             return {
                 ...state,
-                product: [state.product.push(action.payload)]
+                product: action.payload
             }
+
         default:
             return state;
     }

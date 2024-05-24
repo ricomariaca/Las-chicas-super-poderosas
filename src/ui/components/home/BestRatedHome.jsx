@@ -3,6 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import { CardProduct } from "../common/CardProduct";
 import { useEffect, useState } from "react";
 import { loadProducts } from "../../../hunt/helpers/loadProducts";
+import { ProductView } from "../../../hunt/pages/products/ProductView";
 
 export const BestRatedHome = () => {
   const [products, setProducts] = useState([]);
@@ -18,6 +19,7 @@ export const BestRatedHome = () => {
 
     fetchProducts();
   }, []);
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1024 },
@@ -39,11 +41,15 @@ export const BestRatedHome = () => {
 
   const card = products.map((item) => (
     <CardProduct
+      key={item.userId}
       name={item.name}
       url={item.ProductURL}
       description={item.ProductDescription}
+      UserName={item.User}
+      Url={item.Url}
     />
   ));
+
   return (
     <div>
       <div className="flex items-center">

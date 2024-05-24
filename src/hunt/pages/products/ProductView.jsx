@@ -4,12 +4,13 @@ import { StarRating } from "../../../ui/components/common/StarRating";
 import { BsChatRight } from "react-icons/bs";
 import { CiUser } from "react-icons/ci";
 import { useContext, useEffect, useState } from "react";
-import { ReviewContext } from "../../context";
+import { ProductContext, ReviewContext } from "../../context";
 import { useForm } from "../../../hooks";
 import icons from "../../../assets/icons";
 import { loadReview } from "../../helpers/loadReview";
 import { AuthContext } from "../../../auth";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const newEmptyReview = {
   Review: "",
@@ -17,9 +18,14 @@ const newEmptyReview = {
 };
 
 export const ProductView = () => {
+  const location = useLocation();
+  const { key, name, url, description, userName, UrlPhoto } =
+    location.state || {};
+
   const { logged } = useContext(AuthContext);
   const { saveReview, user } = useContext(ReviewContext);
-  console.log(user);
+  const { product, ProductDescription } = useContext(ProductContext);
+
   const { Review, star, onInputChange } = useForm(newEmptyReview);
   const [review, setReview] = useState([]);
 
@@ -46,7 +52,6 @@ export const ProductView = () => {
     await saveReview(newReview);
   };
   const handleRatingChange = (rating) => {
-    // Actualiza el estado de la calificación (star) cada vez que cambia
     onInputChange({ target: { name: "star", value: rating } });
   };
 
@@ -60,12 +65,12 @@ export const ProductView = () => {
 
       <div className="grid grid-cols-4">
         <div className="col-span-2">
-          <ImgGallery />
+          <ImgGallery UrlImagen={url} />
         </div>
 
         <div className="my-14 ">
           <h1 className="font-bold">Title</h1>
-          <span>Mkbook</span>
+          <span>{name}</span>
 
           <div className="my-8">
             <div>
@@ -75,13 +80,18 @@ export const ProductView = () => {
               <StarRating />
             </div>
           </div>
-          <div className="my8">
-            <p className="font-bold">User</p>
-            <span>juan patricio de montana</span>
+          <div className="flex items-center">
+            <img
+              src={UrlPhoto}
+              alt="User Icon"
+              className="w-8 h-8 cursor-pointer rounded-full"
+            />
+            <label className="ml-2">{userName}</label>
+            <button className="text-blue-500">Seguir</button>
           </div>
           <div className="my-8">
             <p className="font-bold">description</p>
-            <span>Una mkbook barata</span>
+            <span>{description}</span>
           </div>
         </div>
         <div className="max-w-screen-md mx-auto my-auto p-4">

@@ -1,56 +1,48 @@
-import React, { useContext, useReducer } from 'react'
-import { productReducer } from '../reducers/productReducer'
-import { AuthContext } from '../../auth'
-import { FirebaseDB } from '../../firebase/config'
-import { productTypes } from '../types'
-import { ProductContext } from './ProductContext'
-import { collection, doc, setDoc } from 'firebase/firestore/lite'
+import React, { useContext, useReducer } from "react";
+import { productReducer } from "../reducers/productReducer";
+import { AuthContext } from "../../auth";
+import { FirebaseDB } from "../../firebase/config";
+import { productTypes } from "../types";
+import { ProductContext } from "./ProductContext";
+import { collection, doc, setDoc } from "firebase/firestore/lite";
 
 const initialState = {
-    product: []
-}
+  product: [],
+};
 
-export const ProductProvider = ({children}) => {
-    const [productState, dispatch] = useReducer(productReducer, initialState);
+export const ProductProvider = ({ children }) => {
+  const [productState, dispatch] = useReducer(productReducer, initialState);
 
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-    const saveProduct = async (product) => {
-    
-        try {
-            console.log(product)
-            const newProduct = doc(collection(FirebaseDB, "products"));
-           
-            console.log(newProduct)
+  const saveProduct = async (product) => {
+    try {
+      console.log(product);
+      const newProduct = doc(collection(FirebaseDB, "products"));
 
-            await setDoc(newProduct, product);
+      console.log(newProduct);
 
-            product.id = newProduct.id
+      await setDoc(newProduct, product);
 
-            const action = { type: productTypes.saveProduct, payload: product }
+      product.id = newProduct.id;
+      //const payload = { userId, name, Tage, ProductURL, ProductDescription };
 
-            dispatch(action);
+      const action = { type: productTypes.saveProduct, payload: product };
 
-        } catch (error) {
-            console.log(error)
-        }
-
+      dispatch(action);
+    } catch (error) {
+      console.log(error);
     }
-    return (
-
-        <ProductContext.Provider value={
-            {
-                ...productState,
-                saveProduct,
-                user
-            }
-        }> 
-        {children}
-        </ProductContext.Provider>
-
-
-
-    )
-
-}
-
+  };
+  return (
+    <ProductContext.Provider
+      value={{
+        ...productState,
+        saveProduct,
+        user,
+      }}
+    >
+      {children}
+    </ProductContext.Provider>
+  );
+};
