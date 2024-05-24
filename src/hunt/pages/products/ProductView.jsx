@@ -4,7 +4,7 @@ import { StarRating } from "../../../ui/components/common/StarRating";
 import { BsChatRight } from "react-icons/bs";
 import { CiUser } from "react-icons/ci";
 import { useContext, useEffect, useState } from "react";
-import { ProductContext, ReviewContext, FollowContext } from "../../context";
+import { ProductContext, ReviewContext } from "../../context";
 import { useForm } from "../../../hooks";
 import icons from "../../../assets/icons";
 import { loadReview } from "../../helpers/loadReview";
@@ -25,7 +25,7 @@ export const ProductView = () => {
   const { logged } = useContext(AuthContext);
   const { saveReview, user } = useContext(ReviewContext);
   const { product, ProductDescription } = useContext(ProductContext);
-  const { saveFollow } = useContext(FollowContext)
+  const { saveFollow } = useContext(FollowContext);
 
   const { Review, star, onInputChange } = useForm(newEmptyReview);
   const [review, setReview] = useState([]);
@@ -55,16 +55,6 @@ export const ProductView = () => {
   const handleRatingChange = (rating) => {
     onInputChange({ target: { name: "star", value: rating } });
   };
-
-  const onCreateFollowing = async (event) => {
-    event.preventDefault();
-
-    const newfollow = {
-      Siguindo: userName,
-      seguidor: user.uid
-    };
-    await saveFollow(newfollow)
-  }
 
   return (
     <>
@@ -98,8 +88,7 @@ export const ProductView = () => {
               className="w-8 h-8 cursor-pointer rounded-full"
             />
             <label className="ml-2">{userName}</label>
-            <button className="text-blue-500"
-            onClick={onCreateFollowing}>Seguir</button>
+            <button className="text-blue-500">Seguir</button>
           </div>
           <div className="my-8">
             <p className="font-bold">description</p>

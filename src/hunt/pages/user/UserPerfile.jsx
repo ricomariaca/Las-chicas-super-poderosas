@@ -32,7 +32,9 @@ export const UserPerfile = () => {
 
           <div>
             <span className="font-bold">E-mail*</span>
-            <h1>{user?.googleEmail}</h1>
+            <h1>
+              {user?.googleEmail} {user?.email}
+            </h1>
           </div>
 
           <div>
