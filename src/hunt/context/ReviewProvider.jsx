@@ -36,10 +36,8 @@ export const ReviewProvider = ({children}) => {
         } catch (error) {
             console.log(error)
         }
-
     }
     return (
-
         <ReviewContext.Provider value={
             {
                 ...reviewState,

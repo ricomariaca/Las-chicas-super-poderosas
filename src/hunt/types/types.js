@@ -12,3 +12,10 @@ export const ReviewTypes = {
     updateReview: '[Review] save',
     errorReview: '[Review] save'
 }
+
+export const followTypes = {
+
+    saveFollow: '[Follow] save',
+    updateFollow: '[Follow] save',
+    errorFollow: '[Follow] save'
+}

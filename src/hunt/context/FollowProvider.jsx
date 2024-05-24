@@ -1,33 +1,32 @@
 import React, { useContext, useReducer } from "react";
-import { productReducer } from "../reducers/productReducer";
+import { followReducer } from "../reducers";
 import { AuthContext } from "../../auth";
 import { FirebaseDB } from "../../firebase/config";
-import { productTypes } from "../types";
-import { ProductContext } from "./ProductContext";
+import { followTypes } from "../types";
+import { FollowContext } from "./FollowContext";
 import { collection, doc, setDoc } from "firebase/firestore/lite";
 
 const initialState = {
   follow: [],
 };
 
-export const ProductProvider = ({ children }) => {
-  const [followState, dispatch] = useReducer(productReducer, initialState);
+export const FollowProvider = ({ children }) => {
+  const [followState, dispatch] = useReducer(followReducer, initialState);
 
   const { user } = useContext(AuthContext);
 
-  const saveProduct = async (product) => {
+  const saveFollow = async (follow) => {
     try {
-      console.log(product);
-      const newProduct = doc(collection(FirebaseDB, "products"));
+      console.log(follow);
+      const newfollow = doc(collection(FirebaseDB, "follows"));
 
-      console.log(newProduct);
+      console.log(newfollow);
 
-      await setDoc(newProduct, product);
+      await setDoc(newfollow, follow);
 
-      product.id = newProduct.id;
-      //const payload = { userId, name, Tage, ProductURL, ProductDescription };
-
-      const action = { type: productTypes.saveProduct, payload: product };
+      follow.id = newfollow.id;
+      
+      const action = { type: followTypes.saveFollow, payload: follow };
 
       dispatch(action);
     } catch (error) {
@@ -35,14 +34,14 @@ export const ProductProvider = ({ children }) => {
     }
   };
   return (
-    <ProductContext.Provider
+    <FollowContext.Provider
       value={{
-        ...productState,
-        saveProduct,
+        ...followState,
+        saveFollow,
         user,
       }}
     >
       {children}
-    </ProductContext.Provider>
+    </FollowContext.Provider>
   );
 };
