@@ -73,6 +73,8 @@ export const ProductView = () => {
       Siguindo: userName,
       UrlPhotoSeguido: UrlPhoto,
       seguidor: user.uid,
+      NameSeguidor: user.displayName,
+      UrlPhotoSeguidor: user.photoURL,
     };
     await saveFollow(newfollow);
     setIsFollowing(true);
