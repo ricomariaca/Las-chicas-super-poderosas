@@ -1,7 +1,7 @@
 import {followTypes} from "../types"
-
+ 
 export const followReducer = (state = {}, action) => {
-
+ 
     switch (action.type) {
         case followTypes.saveReview:
             return {

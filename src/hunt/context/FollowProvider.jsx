@@ -25,7 +25,7 @@ export const FollowProvider = ({ children }) => {
       await setDoc(newfollow, follow);
 
       follow.id = newfollow.id;
-      
+
       const action = { type: followTypes.saveFollow, payload: follow };
 
       dispatch(action);
