@@ -1,4 +1,3 @@
-// Followers.js
 import React, { useState, useEffect } from 'react';
 import { Navbar } from '../../../ui/components/common/Navbar';
 import { collection, getDocs } from 'firebase/firestore/lite';
@@ -18,6 +17,7 @@ export const Followers = () => {
         console.error("Error fetching users: ", error);
       }
     };
+
 
     Followwing();
   }, []);
