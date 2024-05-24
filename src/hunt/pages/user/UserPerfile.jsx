@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import images from "../../../assets/images";
 import { AuthContext } from "../../../auth";
 import { Navbar } from "../../../ui/components/common/Navbar";
 import { Link, NavLink, useNavigate } from "react-router-dom";
