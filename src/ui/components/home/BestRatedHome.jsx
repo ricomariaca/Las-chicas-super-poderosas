@@ -47,6 +47,7 @@ export const BestRatedHome = () => {
       description={item.ProductDescription}
       UserName={item.User}
       Url={item.Url}
+      userId={item.userId}
     />
   ));
 

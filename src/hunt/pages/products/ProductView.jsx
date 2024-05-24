@@ -12,8 +12,6 @@ import { AuthContext } from "../../../auth";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-//holi
-
 const newEmptyReview = {
   Review: "",
   star: "",
@@ -21,7 +19,7 @@ const newEmptyReview = {
 
 export const ProductView = () => {
   const location = useLocation();
-  const { key, name, url, description, userName, UrlPhoto } =
+  const { key, name, url, description, userName, UrlPhoto, IdUser } =
     location.state || {};
 
   const { logged } = useContext(AuthContext);
@@ -31,6 +29,7 @@ export const ProductView = () => {
 
   const { Review, star, onInputChange } = useForm(newEmptyReview);
   const [review, setReview] = useState([]);
+  const [isFollowing, setIsFollowing] = useState(false); // Estado para gestionar si se sigue al usuario
 
   useEffect(() => {
     const fetchReview = async () => {
@@ -42,7 +41,14 @@ export const ProductView = () => {
       }
     };
     fetchReview();
-  }, []);
+
+    // Leer el estado de seguimiento desde localStorage
+    /*const followingState = localStorage.getItem(`following_${IdUser}`);
+    if (followingState) {
+      setIsFollowing(JSON.parse(followingState));
+    }
+    */
+  }, [IdUser]);
 
   const onCreateReview = async (event) => {
     event.preventDefault();
@@ -54,6 +60,7 @@ export const ProductView = () => {
     };
     await saveReview(newReview);
   };
+
   const handleRatingChange = (rating) => {
     onInputChange({ target: { name: "star", value: rating } });
   };
@@ -62,10 +69,14 @@ export const ProductView = () => {
     event.preventDefault();
 
     const newfollow = {
+      IdSeguido: IdUser,
       Siguindo: userName,
+      UrlPhotoSeguido: UrlPhoto,
       seguidor: user.uid,
     };
     await saveFollow(newfollow);
+    setIsFollowing(true);
+    localStorage.setItem(`following_${IdUser}`, true);
   };
 
   return (
@@ -100,9 +111,15 @@ export const ProductView = () => {
               className="w-8 h-8 cursor-pointer rounded-full"
             />
             <label className="ml-2">{userName}</label>
-            <button className="text-blue-500" onClick={onCreateFollowing}>
-              Seguir
-            </button>
+            {isFollowing ? (
+              <button className="text-gray-500 cursor-not-allowed" disabled>
+                Siguiendo
+              </button>
+            ) : (
+              <button className="text-blue-500" onClick={onCreateFollowing}>
+                Seguir
+              </button>
+            )}
           </div>
           <div className="my-8">
             <p className="font-bold">description</p>

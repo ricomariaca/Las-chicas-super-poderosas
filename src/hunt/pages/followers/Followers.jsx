@@ -28,7 +28,7 @@ export const Followers = () => {
     <>
       <Navbar />
       <div>
-        <h1>usuarios seguidos</h1>
+        <h1>Seguidores:</h1>
         <ul>
           {users.map((user) => (
             <li key={user.id}>{user.Siguindo}</li>

@@ -47,6 +47,7 @@ export const LatestPosts = () => {
       description={products.ProductDescription}
       UserName={products.User}
       Url={products.Url}
+      userId={products.userId}
     />
   ));
 

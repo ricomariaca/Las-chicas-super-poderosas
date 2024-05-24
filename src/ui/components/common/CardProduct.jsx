@@ -17,6 +17,7 @@ export const CardProduct = (props) => {
         description: props.description,
         userName: props.UserName,
         UrlPhoto: props.Url,
+        IdUser: props.userId,
       },
     });
   };
