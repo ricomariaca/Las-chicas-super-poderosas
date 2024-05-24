@@ -31,7 +31,7 @@ export const PublicProducts = () => {
     if (tag === "") {
       setFilteredProducts(products);
     } else {
-      setFilteredProducts(products.filter(product => product.Tage === tag));
+      setFilteredProducts(products.filter((product) => product.Tage === tag));
     }
   };
 
@@ -69,7 +69,7 @@ export const PublicProducts = () => {
                   >
                     {!logged && (
                       <NavLink
-                        to="/productView"
+                        to="/home"
                         className="nav-link text-teal-600 mr-4"
                       >
                         <img
@@ -82,7 +82,7 @@ export const PublicProducts = () => {
                     {logged && (
                       <>
                         <NavLink
-                          to="/productViewlog"
+                          to="/home"
                           className="nav-link text-teal-600 mr-4"
                         >
                           <img

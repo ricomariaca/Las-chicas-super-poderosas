@@ -24,7 +24,7 @@ export const ProductView = () => {
 
   const { logged } = useContext(AuthContext);
   const { saveReview, user } = useContext(ReviewContext);
-  const { product, ProductDescription } = useContext(ProductContext);
+  //const { product, ProductDescription } = useContext(ProductContext);
   const { saveFollow } = useContext(FollowContext);
 
   const { Review, star, onInputChange } = useForm(newEmptyReview);
@@ -118,9 +118,22 @@ export const ProductView = () => {
                 Siguiendo
               </button>
             ) : (
-              <button className="text-blue-500" onClick={onCreateFollowing}>
-                Seguir
-              </button>
+              <>
+                {!logged && (
+                  <>
+                    <label htmlFor=""></label> <br />
+                    <Link to="/login" className="text-md text-blue-500">
+                      Seguir
+                    </Link>
+                  </>
+                )}
+
+                {logged && (
+                  <button className="text-blue-500" onClick={onCreateFollowing}>
+                    Seguir
+                  </button>
+                )}
+              </>
             )}
           </div>
           <div className="my-8">

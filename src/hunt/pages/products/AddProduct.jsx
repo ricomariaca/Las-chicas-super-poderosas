@@ -28,6 +28,11 @@ export const AddProduct = () => {
   const onCreateProduct = async (event) => {
     event.preventDefault();
 
+    const generateId = () => {
+      return `id-${Math.random().toString(36).substr(2, 9)}-${Date.now()}`;
+    };
+    const id = generateId();
+
     const newProduct = {
       name: name,
       userId: user.uid,
@@ -36,6 +41,7 @@ export const AddProduct = () => {
       ProductDescription: ProductDescription,
       User: user.displayName,
       Url: user.photoURL,
+      IdProduct: id,
     };
 
     await saveProduct(newProduct);
