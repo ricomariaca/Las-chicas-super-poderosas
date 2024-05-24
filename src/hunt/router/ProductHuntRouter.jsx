@@ -1,9 +1,7 @@
 import { Navigate, Routes, Route } from "react-router-dom";
 import { ProductHome } from "../pages/ProductHome";
-import { Navbar } from "../../ui/components/common/Navbar";
 import { UserPerfile } from "../pages/user/UserPerfile";
 import { ProductView } from "../pages/products/ProductView";
-import { LoginPage } from "../../auth";
 import { ProductList } from "../pages/products/ProductList";
 import { AddProduct } from "../pages/products/AddProduct";
 import { EditProfile } from "../pages/user/EditProfile";

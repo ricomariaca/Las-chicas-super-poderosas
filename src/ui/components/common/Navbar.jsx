@@ -3,7 +3,6 @@ import { AuthContext } from "../../../auth";
 import { ProductHome } from "../../../hunt/pages/ProductHome";
 import icon from "../../../assets/icons";
 import React, { useContext, useState } from "react";
-import images from "../../../assets/images";
 import icons from "../../../assets/icons";
 
 export const Navbar = () => {
