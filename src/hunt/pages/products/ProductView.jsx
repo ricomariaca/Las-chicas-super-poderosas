@@ -10,13 +10,18 @@ import icons from "../../../assets/icons";
 import { loadReview } from "../../helpers/loadReview";
 import { AuthContext } from "../../../auth";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const newEmptyReview = {
   Review: "",
   star: "",
 };
 
-export const ProductView = (props) => {
+export const ProductView = () => {
+  const location = useLocation();
+  const { key, name, url, description, userName, UrlPhoto } =
+    location.state || {};
+
   const { logged } = useContext(AuthContext);
   const { saveReview, user } = useContext(ReviewContext);
   const { product, ProductDescription } = useContext(ProductContext);
@@ -60,14 +65,12 @@ export const ProductView = (props) => {
 
       <div className="grid grid-cols-4">
         <div className="col-span-2">
-          <ImgGallery />
+          <ImgGallery UrlImagen={url} />
         </div>
 
         <div className="my-14 ">
           <h1 className="font-bold">Title</h1>
-          <span>
-            {product.name} {props.name}aaaaa
-          </span>
+          <span>{name}</span>
 
           <div className="my-8">
             <div>
@@ -77,13 +80,18 @@ export const ProductView = (props) => {
               <StarRating />
             </div>
           </div>
-          <div className="my8">
-            <p className="font-bold">User</p>
-            <span>juan patricio de montana</span>
+          <div className="flex items-center">
+            <img
+              src={UrlPhoto}
+              alt="User Icon"
+              className="w-8 h-8 cursor-pointer rounded-full"
+            />
+            <label className="ml-2">{userName}</label>
+            <button className="text-blue-500">Seguir</button>
           </div>
           <div className="my-8">
-            <p className="font-bold">description {ProductDescription}</p>
-            <span>{props.description}</span>
+            <p className="font-bold">description</p>
+            <span>{description}</span>
           </div>
         </div>
         <div className="max-w-screen-md mx-auto my-auto p-4">

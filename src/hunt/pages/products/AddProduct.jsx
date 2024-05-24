@@ -14,8 +14,14 @@ const newEmptyProduct = {
 
 export const AddProduct = () => {
   const { saveProduct, user } = useContext(ProductContext);
-  const { name, ProductURL, Tage, ProductDescription, onInputChange, resetForm } =
-    useForm(newEmptyProduct);
+  const {
+    name,
+    ProductURL,
+    Tage,
+    ProductDescription,
+    onInputChange,
+    resetForm,
+  } = useForm(newEmptyProduct);
   const [selectedTage, setSelectedTage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -28,16 +34,16 @@ export const AddProduct = () => {
       ProductURL: ProductURL,
       Tage: Tage || selectedTage,
       ProductDescription: ProductDescription,
+      User: user.displayName,
+      Url: user.photoURL,
     };
 
     await saveProduct(newProduct);
 
-    
     setSuccessMessage("Producto agregado correctamente!");
 
-    
     resetForm();
-    setSelectedTage('');
+    setSelectedTage("");
   };
 
   const handleTageChange = (event) => {
@@ -98,7 +104,7 @@ export const AddProduct = () => {
                 name="Tage"
                 onChange={(e) => {
                   onInputChange(e);
-                  setSelectedTage(""); 
+                  setSelectedTage("");
                 }}
                 value={Tage}
               />

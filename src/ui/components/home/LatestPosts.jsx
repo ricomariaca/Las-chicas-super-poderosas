@@ -45,6 +45,8 @@ export const LatestPosts = () => {
       name={products.name}
       url={products.ProductURL}
       description={products.ProductDescription}
+      UserName={products.User}
+      Url={products.Url}
     />
   ));
 
