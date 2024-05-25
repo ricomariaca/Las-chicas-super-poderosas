@@ -50,29 +50,34 @@ export const Followers = () => {
   return (
     <>
       <Navbar />
-      <h1>Me están siguiendo:</h1>
-      <div>
-        <h1>usuarios que me siguen</h1>
-        <ul>
-          {users.map((user) => (
-            <li key={user.id}>
-              <div className="flex items-center">
-                <img
-                  src={user.UrlPhotoSeguidor}
-                  alt="User Icon"
-                  className="w-8 h-8 cursor-pointer rounded-full"
-                />
-                <label className="ml-2">{user.NameSeguidor}</label>
-                <button
-                  className="bg-red-700 text-white px-4 py-2 rounded"
-                  onClick={() => Delete(user.IdSeguido)}
-                >
-                  Delete
-                </button>
+      <div className="mt-8 flex justify-center">
+        <div className="max-w-4xl w-full px-4">
+          <div className="flex flex-col items-center">
+            <div className="w-full">
+              <div className="flex justify-center items-center mb-4">
+                <h2 className="text-2xl font-bold mr-4">Usuarios que me siguen</h2>
               </div>
-            </li>
-          ))}
-        </ul>
+              <ul className="grid grid-cols-1 gap-4 mt-8">
+                {users.map((user) => (
+                  <div
+                    key={user.id}
+                    className="border rounded p-4 flex items-center"
+                  >
+                    <img
+                      src={user.UrlPhotoSeguidor}
+                      alt="User Icon"
+                      className="w-16 h-16 mb-2 md:mr-2 rounded-full"
+                    />
+                    <div className="flex flex-col">
+                      <h1>{user.NameSeguidor}</h1>
+                    </div>
+                    
+                  </div>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
